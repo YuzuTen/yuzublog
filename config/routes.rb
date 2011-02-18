@@ -3,8 +3,10 @@ Weblog::Application.routes.draw do
 
   get "say/hello"
 
+
   get "say/goodbye"
 
+  root :to => 'blogs#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
