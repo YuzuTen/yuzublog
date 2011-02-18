@@ -270,3 +270,92 @@ Started GET "/" for 127.0.0.1 at 2011-02-18 12:20:11 -0800
   [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
 Rendered blogs/index.html.erb within layouts/application (9.8ms)
 Completed 200 OK in 47ms (Views: 12.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 13:49:37 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered blogs/index.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 43ms (Views: 12.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 14:08:58 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered blogs/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 50ms (Views: 13.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/blogs" for 127.0.0.1 at 2011-02-18 14:09:02 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered blogs/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 34ms (Views: 10.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/say" for 127.0.0.1 at 2011-02-18 14:09:07 -0800
+
+ActionController::RoutingError (No route matches "/say"):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/say/hello" for 127.0.0.1 at 2011-02-18 14:09:11 -0800
+  Processing by SayController#hello as HTML
+Rendered say/hello.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (20.2ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "slug" varchar(255), "domain" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (11.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (13.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (10.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110216051600')[0m
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (19.8ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "slug" varchar(255), "domain" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (10.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (13.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (11.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110216051600')[0m
