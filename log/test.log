@@ -706,3 +706,283 @@ Completed 302 Found in 2ms
 Completed 200 OK in 2ms (Views: 2.3ms | ActiveRecord: 0.2ms)
   Processing by SayController#hello as HTML
 Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  Processing by AuthorsController#create as HTML
+  Parameters: {"author"=>{"created_at"=>2011-02-20 01:39:53 UTC, "id"=>980190962, "name"=>"MyString", "updated_at"=>2011-02-20 01:39:53 UTC}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES ('MyString', '2011-02-20 01:39:53.000000', '2011-02-20 01:39:53.000000')
+Redirected to http://test.host/authors/980190963
+Completed 302 Found in 12ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  Processing by AuthorsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "authors" WHERE "authors"."id" = 980190962[0m
+Redirected to http://test.host/authors
+Completed 302 Found in 1ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "authors"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+  Processing by AuthorsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+Rendered authors/_form.html.erb (3.4ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 2.0ms)
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+  Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors"
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+  Processing by AuthorsController#new as HTML
+Rendered authors/_form.html.erb (1.1ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  Processing by AuthorsController#update as HTML
+  Parameters: {"author"=>{"created_at"=>2011-02-20 01:39:53 UTC, "id"=>980190962, "name"=>"MyString", "updated_at"=>2011-02-20 01:39:53 UTC}, "id"=>"980190962"}
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/authors/980190962
+Completed 302 Found in 2ms
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Processing by BlogsController#create as HTML
+  Parameters: {"blog"=>{"created_at"=>2011-02-20 01:39:53 UTC, "description"=>"MyText", "domain"=>"MyString", "id"=>980190962, "name"=>"MyString", "slug"=>"MyString", "updated_at"=>2011-02-20 01:39:53 UTC}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "blogs" ("name", "slug", "domain", "description", "created_at", "updated_at") VALUES ('MyString', 'MyString', 'MyString', 'MyText', '2011-02-20 01:39:53.000000', '2011-02-20 01:39:53.000000')
+Redirected to http://test.host/blogs/980190963
+Completed 302 Found in 7ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Processing by BlogsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "blogs" WHERE "blogs"."id" = 980190962[0m
+Redirected to http://test.host/blogs
+Completed 302 Found in 1ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "blogs"
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+Rendered blogs/_form.html.erb (3.1ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 1.2ms)
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs"
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  Processing by BlogsController#new as HTML
+Rendered blogs/_form.html.erb (2.3ms)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.1ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  Processing by BlogsController#update as HTML
+  Parameters: {"blog"=>{"created_at"=>2011-02-20 01:39:53 UTC, "description"=>"MyText", "domain"=>"MyString", "id"=>980190962, "name"=>"MyString", "slug"=>"MyString", "updated_at"=>2011-02-20 01:39:53 UTC}, "id"=>"980190962"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/blogs/980190962
+Completed 302 Found in 2ms
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Processing by PostsController#create as HTML
+  Parameters: {"post"=>{"created_at"=>2011-02-20 01:39:53 UTC, "id"=>980190962, "publish_on"=>Sat, 19 Feb 2011, "story"=>"MyText", "title"=>"MyString", "updated_at"=>2011-02-20 01:39:53 UTC}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at") VALUES ('MyString', 'MyText', '2011-02-19', '2011-02-20 01:39:53.000000', '2011-02-20 01:39:53.000000')
+Redirected to http://test.host/posts/980190963
+Completed 302 Found in 7ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 980190962[0m
+Redirected to http://test.host/posts
+Completed 302 Found in 1ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+Rendered posts/_form.html.erb (3.6ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 1.2ms)
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (2.8ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.1ms)
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  Processing by PostsController#update as HTML
+  Parameters: {"post"=>{"created_at"=>2011-02-20 01:39:53 UTC, "id"=>980190962, "publish_on"=>Sat, 19 Feb 2011, "story"=>"MyText", "title"=>"MyString", "updated_at"=>2011-02-20 01:39:53 UTC}, "id"=>"980190962"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/posts/980190962
+Completed 302 Found in 2ms
+  Processing by SayController#goodbye as HTML
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+  Processing by SayController#hello as HTML
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  Processing by AuthorsController#create as HTML
+  Parameters: {"author"=>{"created_at"=>2011-02-20 01:51:31 UTC, "id"=>980190962, "name"=>"MyString", "updated_at"=>2011-02-20 01:51:31 UTC}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "authors" ("name", "created_at", "updated_at") VALUES ('MyString', '2011-02-20 01:51:31.000000', '2011-02-20 01:51:31.000000')
+Redirected to http://test.host/authors/980190963
+Completed 302 Found in 8ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  Processing by AuthorsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "authors" WHERE "authors"."id" = 980190962[0m
+Redirected to http://test.host/authors
+Completed 302 Found in 1ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "authors"
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+  Processing by AuthorsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+Rendered authors/_form.html.erb (3.7ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 2.0ms)
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+  Processing by AuthorsController#index as HTML
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors"
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+  Processing by AuthorsController#new as HTML
+Rendered authors/_form.html.erb (1.1ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.1ms)
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  Processing by AuthorsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1
+  Processing by AuthorsController#update as HTML
+  Parameters: {"author"=>{"created_at"=>2011-02-20 01:51:31 UTC, "id"=>980190962, "name"=>"MyString", "updated_at"=>2011-02-20 01:51:31 UTC}, "id"=>"980190962"}
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT "authors".* FROM "authors" WHERE "authors"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/authors/980190962
+Completed 302 Found in 2ms
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Processing by BlogsController#create as HTML
+  Parameters: {"blog"=>{"created_at"=>2011-02-20 01:51:31 UTC, "description"=>"MyText", "domain"=>"MyString", "id"=>980190962, "name"=>"MyString", "slug"=>"MyString", "updated_at"=>2011-02-20 01:51:31 UTC}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "blogs" ("name", "slug", "domain", "description", "created_at", "updated_at") VALUES ('MyString', 'MyString', 'MyString', 'MyText', '2011-02-20 01:51:31.000000', '2011-02-20 01:51:31.000000')
+Redirected to http://test.host/blogs/980190963
+Completed 302 Found in 7ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Processing by BlogsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "blogs" WHERE "blogs"."id" = 980190962[0m
+Redirected to http://test.host/blogs
+Completed 302 Found in 1ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "blogs"
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+Rendered blogs/_form.html.erb (4.0ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 1.1ms)
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs"
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  Processing by BlogsController#new as HTML
+Rendered blogs/_form.html.erb (2.1ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.1ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 32ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  Processing by BlogsController#update as HTML
+  Parameters: {"blog"=>{"created_at"=>2011-02-20 01:51:31 UTC, "description"=>"MyText", "domain"=>"MyString", "id"=>980190962, "name"=>"MyString", "slug"=>"MyString", "updated_at"=>2011-02-20 01:51:31 UTC}, "id"=>"980190962"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/blogs/980190962
+Completed 302 Found in 2ms
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Processing by PostsController#create as HTML
+  Parameters: {"post"=>{"created_at"=>2011-02-20 01:51:31 UTC, "id"=>980190962, "publish_on"=>Sat, 19 Feb 2011, "story"=>"MyText", "title"=>"MyString", "updated_at"=>2011-02-20 01:51:31 UTC}}
+WARNING: Can't mass-assign protected attributes: id
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at") VALUES ('MyString', 'MyText', '2011-02-19', '2011-02-20 01:51:31.000000', '2011-02-20 01:51:31.000000')
+Redirected to http://test.host/posts/980190963
+Completed 302 Found in 7ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 980190962[0m
+Redirected to http://test.host/posts
+Completed 302 Found in 1ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+Rendered posts/_form.html.erb (3.8ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 1.2ms)
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (2.9ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.1ms)
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  Processing by PostsController#update as HTML
+  Parameters: {"post"=>{"created_at"=>2011-02-20 01:51:31 UTC, "id"=>980190962, "publish_on"=>Sat, 19 Feb 2011, "story"=>"MyText", "title"=>"MyString", "updated_at"=>2011-02-20 01:51:31 UTC}, "id"=>"980190962"}
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/posts/980190962
+Completed 302 Found in 2ms
+  Processing by SayController#goodbye as HTML
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.2ms)
+  Processing by SayController#hello as HTML
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
