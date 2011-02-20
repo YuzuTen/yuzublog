@@ -1428,3 +1428,31 @@ Completed 200 OK in 82ms (Views: 38.0ms | ActiveRecord: 0.4ms)
 
 
 Started GET "/users/auth/facebook" for 127.0.0.1 at 2011-02-19 17:55:13 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 22:00:49 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered blogs/index.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 80ms (Views: 37.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2011-02-19 22:00:53 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 22:07:56 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered blogs/index.html.erb within layouts/application (34.7ms)
+Completed 200 OK in 81ms (Views: 37.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2011-02-19 22:07:57 -0800
+
+
+Started GET "/users/auth/facebook/callback?code=d674a671a70620722c018091-880895242%7CcsXt1Spk2QCNnMVQy6KUBFHB_q0" for 127.0.0.1 at 2011-02-19 22:08:06 -0800
+
+AbstractController::ActionNotFound (The action 'facebook' could not be found for Devise::OmniauthCallbacksController):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.6ms)
