@@ -12,4 +12,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def openid
+    redirect_to :default_scope
+  end
+
 end
