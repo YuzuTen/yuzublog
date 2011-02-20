@@ -1,4 +1,10 @@
 Weblog::Application.routes.draw do
+  devise_for :users
+
+  resources :authors
+
+  resources :posts
+
   resources :blogs
 
   get "say/hello"
