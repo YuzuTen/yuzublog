@@ -20,6 +20,7 @@
   <%= @blog.description %>
 </p>
 
+<%= link_to 'New Post', new_blog_post_path(@blog) %>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

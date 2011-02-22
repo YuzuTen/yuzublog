@@ -1,4 +1,10 @@
 class BlogsController < ApplicationController
+  #only allow editing/creating blogs if you're authenticated.
+  before_filter :authenticate_user!, :except =>  [ :index, :show ]
+  #we'll also need to limit creating blogs to people with permission
+  # and limit editing blogs to admins or contributing users, but
+  # I don't want to worry about that yet.
+
   # GET /blogs
   # GET /blogs.xml
   def index

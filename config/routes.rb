@@ -1,12 +1,11 @@
 Weblog::Application.routes.draw do
   devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-  resources :posts
-
-  resources :blogs
+  resources :blogs do
+    resources :posts
+  end
 
   get "say/hello"
-
 
   get "say/goodbye"
 
