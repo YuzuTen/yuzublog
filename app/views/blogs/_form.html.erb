@@ -27,6 +27,10 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <div class="field">
+    <%= f.label :authors %><br />
+    <%= f.collection_select :author_ids, @users, :id, :email, {}, :multiple => true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

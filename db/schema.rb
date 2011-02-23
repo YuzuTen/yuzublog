@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110222230012) do
+ActiveRecord::Schema.define(:version => 20110223060425) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20110222230012) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "blogs_users", :id => false, :force => true do |t|
+    t.integer "blog_id"
+    t.integer "user_id"
+  end
+
+  add_index "blogs_users", ["blog_id"], :name => "index_blogs_users_on_blog_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"

@@ -31,6 +31,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new.xml
   def new
     @blog = Blog.new
+    @users = User.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +42,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1/edit
   def edit
     @blog = Blog.find(params[:id])
+    @users = User.all
   end
 
   # POST /blogs
