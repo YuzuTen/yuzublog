@@ -2772,3 +2772,1562 @@ Rendered devise/menu/_registration_items.html.erb (27.4ms)
 Rendered devise/menu/_login_items.html.erb (0.7ms)
 Rendered posts/index.html.erb within layouts/application (48.0ms)
 Completed 200 OK in 72ms (Views: 50.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-21 20:47:51 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (23.3ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (67.7ms)
+Completed 200 OK in 179ms (Views: 69.6ms | ActiveRecord: 1.6ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20110216051600)
+Migrating to CreatePosts (20110219175458)
+Migrating to CreateAuthors (20110219175527)
+Migrating to Post (20110219180607)
+Migrating to DeviseCreateUsers (20110219190954)
+Migrating to DropAuthors (20110221182109)
+Migrating to AlterUsersAddFields (20110221183036)
+Migrating to AlterPostsAddUser (20110222062344)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer DEFAULT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110222062344')
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("blogs")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AlterPostsAddUser (20110222062344)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AlterPostsAddUser (20110222062344)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "user_id" integer DEFAULT 1) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_posts")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_posts"
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110222062344'[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20110216051600)
+Migrating to CreatePosts (20110219175458)
+Migrating to CreateAuthors (20110219175527)
+Migrating to Post (20110219180607)
+Migrating to DeviseCreateUsers (20110219190954)
+Migrating to DropAuthors (20110221182109)
+Migrating to AlterUsersAddFields (20110221183036)
+Migrating to AlterPostsAddUser (20110222062344)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mALTER TABLE "posts" ADD "user_id" integer DEFAULT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110222062344')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("blogs")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-22 14:31:35 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.5ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (48.9ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered blogs/index.html.erb within layouts/application (60.9ms)
+Completed 200 OK in 159ms (Views: 62.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-02-22 14:31:38 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (55.2ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (65.7ms)
+Completed 200 OK in 79ms (Views: 68.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 14:31:40 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mUser Load (2.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Completed   in 73ms
+
+NoMethodError (undefined method `attrib_accessor' for #<Class:0x00000004057838>):
+  app/models/post.rb:5:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:37:in `new'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (98.6ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (102.4ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 14:32:10 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed   in 68ms
+
+NoMethodError (undefined method `attribute_accessor' for #<Class:0x000000040b4da8>):
+  app/models/post.rb:5:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:37:in `new'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (98.3ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (102.1ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 14:32:16 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.5ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Completed   in 68ms
+
+NoMethodError (undefined method `accessor' for #<Class:0x00000004448758>):
+  app/models/post.rb:5:in `<class:Post>'
+  app/models/post.rb:1:in `<top (required)>'
+  app/controllers/posts_controller.rb:37:in `new'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (74.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (78.0ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 14:33:20 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Rendered posts/_form.html.erb (41.6ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (46.4ms)
+Completed 200 OK in 97ms (Views: 49.2ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:33:26 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Completed   in 69ms
+
+ArgumentError (wrong number of arguments (2 for 1)):
+  app/controllers/posts_controller.rb:52:in `new'
+  app/controllers/posts_controller.rb:52:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (76.7ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (80.4ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:36:33 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Completed   in 77ms
+
+NoMethodError (undefined method `created_by' for #<Post:0x00000003af1998>):
+  app/controllers/posts_controller.rb:56:in `block in create'
+  app/controllers/posts_controller.rb:55:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (78.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (81.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:37:15 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Completed   in 76ms
+
+NoMethodError (undefined method `created_by' for #<Post:0x000000040072c0>):
+  app/controllers/posts_controller.rb:56:in `block in create'
+  app/controllers/posts_controller.rb:55:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (103.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (107.6ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:37:45 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Completed   in 76ms
+
+NoMethodError (undefined method `created_by' for #<Post:0x000000040b7850>):
+  app/controllers/posts_controller.rb:56:in `block in create'
+  app/controllers/posts_controller.rb:55:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (104.1ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (108.2ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:40:51 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Completed   in 76ms
+
+NoMethodError (undefined method `created_by' for #<Post:0x000000043fa300>):
+  app/controllers/posts_controller.rb:56:in `block in create'
+  app/controllers/posts_controller.rb:55:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (78.1ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (81.9ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:40:56 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:7)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:12)
+Completed   in 48ms
+
+NoMethodError (undefined method `created_by' for #<Post:0x00000003af0b60>):
+  app/controllers/posts_controller.rb:56:in `block in create'
+  app/controllers/posts_controller.rb:55:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (88.3ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (92.0ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:43:00 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (25.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:8)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:13)
+Rendered posts/_form.html.erb (12.5ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (43.6ms)
+Completed 200 OK in 122ms (Views: 46.3ms | ActiveRecord: 31.5ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:43:09 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+DEPRECATION WARNING: Base#before_create has been deprecated, please use Base.before_create :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:8)
+DEPRECATION WARNING: Base#before_update has been deprecated, please use Base.before_update :method instead. (called from <class:Post> at /home/jtruesdell/code/ruby/weblog/app/models/post.rb:13)
+Rendered posts/_form.html.erb (10.9ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 96ms (Views: 18.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:44:46 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (10.6ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 96ms (Views: 18.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:46:30 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (38.3ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 122ms (Views: 45.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:54:01 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Completed   in 87ms
+
+NameError (undefined local variable or method `log' for #<PostsController:0x0000000405a8d0>):
+  app/controllers/posts_controller.rb:53:in `create'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (100.5ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (104.2ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:55:11 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.5ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (12.2ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 98ms (Views: 20.8ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:55:57 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (27.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (10.6ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 125ms (Views: 18.1ms | ActiveRecord: 28.1ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:56:15 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "user_id") VALUES ('asd', 'adf', '2011-02-22', '2011-02-22 22:56:15.277400', '2011-02-22 22:56:15.277400', 1)[0m
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/6
+Completed 302 Found in 139ms
+
+
+Started GET "/blogs/1/posts/6" for 127.0.0.1 at 2011-02-22 14:56:15 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"6"}
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (27.1ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (70.4ms)
+Completed 200 OK in 98ms (Views: 72.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/blogs/1/posts/6" for 127.0.0.1 at 2011-02-22 14:56:26 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"6"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (54.0ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (72.0ms)
+Completed 200 OK in 124ms (Views: 74.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/blogs/1/posts/6/edit" for 127.0.0.1 at 2011-02-22 14:56:29 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"6"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.9ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+Rendered posts/_form.html.erb (16.4ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/edit.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 97ms (Views: 24.4ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/blogs/1/posts/6" for 127.0.0.1 at 2011-02-22 14:56:31 -0800
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Update Post", "blog_id"=>"1", "id"=>"6"}
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+Completed   in 83ms
+
+ActiveRecord::AssociationTypeMismatch (User(#25736460) expected, got Symbol(#9738880)):
+  app/models/post.rb:18:in `set_updated_by'
+  app/controllers/posts_controller.rb:74:in `block in update'
+  app/controllers/posts_controller.rb:73:in `update'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (110.1ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (114.0ms)
+
+
+Started POST "/blogs/1/posts/6" for 127.0.0.1 at 2011-02-22 14:57:08 -0800
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"asd", "story"=>"adf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Update Post", "blog_id"=>"1", "id"=>"6"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE "posts" SET "updated_at" = '2011-02-22 22:57:08.756779' WHERE "posts"."id" = 6[0m
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/6
+Completed 302 Found in 139ms
+
+
+Started GET "/blogs/1/posts/6" for 127.0.0.1 at 2011-02-22 14:57:08 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"6"}
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (32.1ms)
+Rendered devise/menu/_login_items.html.erb (0.9ms)
+Rendered posts/show.html.erb within layouts/application (83.4ms)
+Completed 200 OK in 115ms (Views: 86.4ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 14:57:12 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (55.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (75.3ms)
+Completed 200 OK in 126ms (Views: 77.0ms | ActiveRecord: 1.2ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AlterPostsAddUser (20110222062344)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "user_id" integer DEFAULT 1) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_posts")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_posts"
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110222062344'[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 15:18:41 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (55.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (74.8ms)
+Completed 200 OK in 97ms (Views: 76.6ms | ActiveRecord: 1.4ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20110216051600)
+Migrating to CreatePosts (20110219175458)
+Migrating to CreateAuthors (20110219175527)
+Migrating to Post (20110219180607)
+Migrating to DeviseCreateUsers (20110219190954)
+Migrating to DropAuthors (20110221182109)
+Migrating to AlterUsersAddFields (20110221183036)
+Migrating to ModifyPostsWithCreatedByStamp (20110222230012)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "posts" ADD "created_by_id" integer DEFAULT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "posts" ADD "updated_by_id" integer DEFAULT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110222230012')[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/blogs/1/posts/1" for 127.0.0.1 at 2011-02-22 15:22:42 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (27.0ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (72.9ms)
+Completed 200 OK in 104ms (Views: 74.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/blogs/1/posts/1/edit" for 127.0.0.1 at 2011-02-22 15:22:47 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (45.1ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/edit.html.erb within layouts/application (50.6ms)
+Completed 200 OK in 125ms (Views: 53.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/blogs/1/posts/1" for 127.0.0.1 at 2011-02-22 15:22:51 -0800
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"test12", "story"=>"test\r\netasdf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"21"}, "commit"=>"Update Post", "blog_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE "posts" SET "story" = 'test
+etasdf', "updated_at" = '2011-02-22 23:22:51.971347' WHERE "posts"."id" = 1
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/1
+Completed 302 Found in 146ms
+
+
+Started GET "/blogs/1/posts/1" for 127.0.0.1 at 2011-02-22 15:22:52 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (27.7ms)
+Rendered devise/menu/_login_items.html.erb (0.8ms)
+Rendered posts/show.html.erb within layouts/application (73.3ms)
+Completed 200 OK in 100ms (Views: 74.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 15:23:19 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (26.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (46.5ms)
+Completed 200 OK in 96ms (Views: 48.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 15:23:21 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (38.8ms)
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (43.9ms)
+Completed 200 OK in 94ms (Views: 46.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 15:23:26 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YBJPpMdw95pkIYwo40tU04H5PivGHZbRh6VA2ZMawTY=", "post"=>{"title"=>"my post", "story"=>"asdf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES ('my post', 'asdf', '2011-02-22', '2011-02-22 23:23:26.296236', '2011-02-22 23:23:26.296236', 1, 1)
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/7
+Completed 302 Found in 141ms
+
+
+Started GET "/blogs/1/posts/7" for 127.0.0.1 at 2011-02-22 15:23:26 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"7"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 7 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (27.0ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (77.6ms)
+Completed 200 OK in 106ms (Views: 79.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2011-02-22 15:23:57 -0800
+  Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Redirected to http://test.yuzuten.com:3000/
+Completed 302 Found in 25ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-22 15:23:57 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (39.6ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered blogs/index.html.erb within layouts/application (51.8ms)
+Completed 200 OK in 65ms (Views: 55.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2011-02-22 15:23:59 -0800
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered devise/registrations/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 30ms (Views: 18.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-02-22 15:24:09 -0800
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "user"=>{"email"=>"jtruesdell@seattletimes.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."email" = 'jtruesdell@seattletimes.com') LIMIT 1
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/menu/_registration_items.html.erb (0.8ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered devise/registrations/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 121ms (Views: 12.0ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-02-22 15:24:15 -0800
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "user"=>{"email"=>"jtruesdell@seattletimes.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'jtruesdell@seattletimes.com') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "remember_token", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "created_at", "updated_at", "display_name", "family_name", "given_name") VALUES ('jtruesdell@seattletimes.com', '$2a$10$jXuvie.Bgz.SlLNUi8cP7./bAqc3KQPv.Mt9B051pUvaxnN2iBBCe', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2011-02-22 23:24:15.348581', '2011-02-22 23:24:15.348581', NULL, NULL, NULL)
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-02-22 23:24:15.388180', "current_sign_in_at" = '2011-02-22 23:24:15.388180', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2011-02-22 23:24:15.388763' WHERE "users"."id" = 2[0m
+Redirected to http://test.yuzuten.com:3000/
+Completed 302 Found in 200ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-22 15:24:15 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (0.4ms)[0m  SELECT "blogs".* FROM "blogs"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (57.1ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (68.0ms)
+Completed 200 OK in 79ms (Views: 70.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-02-22 15:24:19 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (55.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (65.7ms)
+Completed 200 OK in 79ms (Views: 67.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 15:24:21 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (10.4ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 94ms (Views: 18.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 15:24:27 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"asdf", "story"=>"ook", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"22"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES ('asdf', 'ook', '2011-02-22', '2011-02-22 23:24:27.575505', '2011-02-22 23:24:27.575505', 1, 1)[0m
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/8
+Completed 302 Found in 136ms
+
+
+Started GET "/blogs/1/posts/8" for 127.0.0.1 at 2011-02-22 15:24:27 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"8"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 8 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (54.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (71.5ms)
+Completed 200 OK in 97ms (Views: 73.3ms | ActiveRecord: 3.0ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to ModifyPostsWithCreatedByStamp (20110222230012)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "created_by_id" integer DEFAULT 1, "updated_by_id" integer DEFAULT 1) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "updated_by_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_posts")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_posts"
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "updated_by_id" integer DEFAULT 1) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_posts")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_posts"
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110222230012'[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to AlterUsersAddFields (20110221183036)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "display_name" varchar(255), "family_name" varchar(255), "given_name" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_users")[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("altered_users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "users"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "family_name" varchar(255), "given_name" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_users_on_email')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "family_name" varchar(255), "given_name" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("altered_users")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("altered_users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "users"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "given_name" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_users_on_email')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.4ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "given_name" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_users")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_users_on_reset_password_token')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "users"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "remember_token" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_users_on_email')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('temp_index_altered_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_users"
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110221183036'[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20110216051600)
+Migrating to CreatePosts (20110219175458)
+Migrating to CreateAuthors (20110219175527)
+Migrating to Post (20110219180607)
+Migrating to DeviseCreateUsers (20110219190954)
+Migrating to DropAuthors (20110221182109)
+Migrating to AlterUsersAddFields (20110221183036)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "users" ADD "display_name" varchar(255) DEFAULT NULL[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "users" ADD "family_name" varchar(255) DEFAULT NULL
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "users" ADD "given_name" varchar(255) DEFAULT NULL[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110221183036')
+Migrating to ModifyPostsWithCreatedByStamp (20110222230012)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "posts" ADD "created_by_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "posts" ADD "updated_by_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110222230012')[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-22 20:10:59 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (63.2ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered blogs/index.html.erb within layouts/application (76.4ms)
+Completed 200 OK in 89ms (Views: 78.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-02-22 20:11:02 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (29.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (56.2ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (67.5ms)
+Completed 200 OK in 83ms (Views: 41.4ms | ActiveRecord: 29.4ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 20:11:36 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (10.7ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 97ms (Views: 18.6ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 20:11:43 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"argh", "story"=>"hmm", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"23"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES ('argh', 'hmm', '2011-02-23', '2011-02-23 04:11:43.628624', '2011-02-23 04:11:43.628624', 2, NULL)[0m
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/9
+Completed 302 Found in 119ms
+
+
+Started GET "/blogs/1/posts/9" for 127.0.0.1 at 2011-02-22 20:11:43 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"9"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 9 LIMIT 1[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (60.9ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered posts/show.html.erb within layouts/application (79.8ms)
+Completed 200 OK in 143ms (Views: 81.9ms | ActiveRecord: 2.7ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to ModifyPostsWithCreatedByStamp (20110222230012)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "updated_by_id" integer) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_posts")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_posts"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime, "updated_by_id" integer) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "posts"[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "story" text, "publish_on" date, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_posts")[0m
+  [1m[35mSQL (0.1ms)[0m  DROP TABLE "altered_posts"
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20110222230012'[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateBlogs (20110216051600)
+Migrating to CreatePosts (20110219175458)
+Migrating to CreateAuthors (20110219175527)
+Migrating to Post (20110219180607)
+Migrating to DeviseCreateUsers (20110219190954)
+Migrating to DropAuthors (20110221182109)
+Migrating to AlterUsersAddFields (20110221183036)
+Migrating to ModifyPostsWithCreatedByStamp (20110222230012)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mALTER TABLE "posts" ADD "created_by_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  ALTER TABLE "posts" ADD "updated_by_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mALTER TABLE "posts" ADD "blog_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110222230012')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("blogs")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_reset_password_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 20:45:30 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (24.3ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered posts/index.html.erb within layouts/application (77.7ms)
+Completed 200 OK in 195ms (Views: 79.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 20:45:36 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (15.2ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 101ms (Views: 22.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 20:45:42 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"ooga", "story"=>"booga", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"23"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id", "blog_id") VALUES ('ooga', 'booga', '2011-02-23', '2011-02-23 04:45:42.439377', '2011-02-23 04:45:42.439377', 2, NULL, NULL)[0m
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/10
+Completed 302 Found in 154ms
+
+
+Started GET "/blogs/1/posts/10" for 127.0.0.1 at 2011-02-22 20:45:42 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"10"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 10 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (53.1ms)
+Rendered devise/menu/_login_items.html.erb (0.8ms)
+Rendered posts/show.html.erb within layouts/application (71.5ms)
+Completed 200 OK in 127ms (Views: 73.3ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:07:40 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (2.0ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (28.9ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered posts/index.html.erb within layouts/application (84.5ms)
+Completed 200 OK in 110ms (Views: 86.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/blogs/1/posts/1/edit" for 127.0.0.1 at 2011-02-22 21:07:43 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (19.7ms)
+Rendered devise/menu/_registration_items.html.erb (0.8ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/edit.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 103ms (Views: 28.7ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/blogs/1/posts/1" for 127.0.0.1 at 2011-02-22 21:07:44 -0800
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"test12", "story"=>"test\r\netasdf", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"21"}, "commit"=>"Update Post", "blog_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE "posts" SET "blog_id" = 1, "updated_by_id" = 2, "updated_at" = '2011-02-23 05:07:44.934387' WHERE "posts"."id" = 1
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/1
+Completed 302 Found in 138ms
+
+
+Started GET "/blogs/1/posts/1" for 127.0.0.1 at 2011-02-22 21:07:44 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (27.0ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (74.7ms)
+Completed 200 OK in 108ms (Views: 76.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:08:03 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.8ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (27.2ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (81.2ms)
+Completed 200 OK in 107ms (Views: 82.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-02-22 21:08:05 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (11.1ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 95ms (Views: 18.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:08:11 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"foo", "story"=>"hoo", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"23"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id", "blog_id") VALUES ('foo', 'hoo', '2011-02-23', '2011-02-23 05:08:11.411828', '2011-02-23 05:08:11.411828', 2, NULL, 1)[0m
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/11
+Completed 302 Found in 148ms
+
+
+Started GET "/blogs/1/posts/11" for 127.0.0.1 at 2011-02-22 21:08:11 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"11"}
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 11 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (27.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (73.3ms)
+Completed 200 OK in 105ms (Views: 75.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-22 21:21:48 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (57.1ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (68.7ms)
+Completed 200 OK in 80ms (Views: 70.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-02-22 21:21:52 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (29.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (57.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (68.6ms)
+Completed 200 OK in 82ms (Views: 41.8ms | ActiveRecord: 29.6ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:21:57 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Completed   in 22ms
+
+NoMethodError (undefined method `find_by_blog' for #<Class:0x000000040eb1f0>):
+  app/controllers/posts_controller.rb:15:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (75.7ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (79.6ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:22:10 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Completed   in 49ms
+
+NoMethodError (undefined method `find_by_blog' for #<Class:0x000000048a6e30>):
+  app/controllers/posts_controller.rb:15:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (75.1ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (103.7ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:22:23 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 LIMIT 1
+Rendered posts/index.html.erb within layouts/application (25.5ms)
+Completed   in 53ms
+
+ActionView::Template::Error (undefined method `each' for #<Post:0x00000004126200>):
+    10:     <th></th>
+    11:   </tr>
+    12: 
+    13: <% @posts.each do |post| %>
+    14:   <tr>
+    15:     <td><%= post.title %></td>
+    16:     <td><%= post.story %></td>
+  app/views/posts/index.html.erb:13:in `_app_views_posts_index_html_erb__4402050840105156057_34121220__3889705294042655483'
+  app/controllers/posts_controller.rb:17:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (72.1ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (104.6ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:22:43 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (54.8ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (73.2ms)
+Completed 200 OK in 127ms (Views: 74.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/blogs/" for 127.0.0.1 at 2011-02-22 21:24:16 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mBlog Load (0.4ms)[0m  SELECT "blogs".* FROM "blogs"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (56.3ms)
+Rendered devise/menu/_login_items.html.erb (0.8ms)
+Rendered blogs/index.html.erb within layouts/application (68.6ms)
+Completed 200 OK in 79ms (Views: 70.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/blogs/new" for 127.0.0.1 at 2011-02-22 21:24:20 -0800
+  Processing by BlogsController#new as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered blogs/_form.html.erb (7.9ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 82ms (Views: 16.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/blogs" for 127.0.0.1 at 2011-02-22 21:24:29 -0800
+  Processing by BlogsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "blog"=>{"name"=>"Fooo", "slug"=>"oc", "domain"=>"", "description"=>"Ok"}, "commit"=>"Create Blog"}
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "blogs" ("name", "slug", "domain", "description", "created_at", "updated_at") VALUES ('Fooo', 'oc', '', 'Ok', '2011-02-23 05:24:29.688168', '2011-02-23 05:24:29.688168')
+Redirected to http://test.yuzuten.com:3000/blogs/2
+Completed 302 Found in 91ms
+
+
+Started GET "/blogs/2" for 127.0.0.1 at 2011-02-22 21:24:29 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (29.1ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 83ms (Views: 41.9ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/blogs/2/posts/new" for 127.0.0.1 at 2011-02-22 21:24:42 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+Rendered posts/_form.html.erb (11.2ms)
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered posts/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 99ms (Views: 19.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/blogs/2/posts" for 127.0.0.1 at 2011-02-22 21:24:49 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"jjjj", "story"=>"", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"23"}, "commit"=>"Create Post", "blog_id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+Rendered posts/_form.html.erb (4.6ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 109ms (Views: 12.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/blogs/2/posts" for 127.0.0.1 at 2011-02-22 21:24:51 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"irhsyGZVOKCXmthTTz37uDw6uiInZhEqiGAmpiDHLrY=", "post"=>{"title"=>"jjjj", "story"=>"k", "publish_on(1i)"=>"2011", "publish_on(2i)"=>"2", "publish_on(3i)"=>"23"}, "commit"=>"Create Post", "blog_id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id", "blog_id") VALUES ('jjjj', 'k', '2011-02-23', '2011-02-23 05:24:52.059727', '2011-02-23 05:24:52.059727', 2, NULL, 2)[0m
+Redirected to http://test.yuzuten.com:3000/blogs/2/posts/12
+Completed 302 Found in 117ms
+
+
+Started GET "/blogs/2/posts/12" for 127.0.0.1 at 2011-02-22 21:24:52 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[35mBlog Load (1.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1[0m
+  [1m[35mUser Load (29.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (56.9ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 131ms (Views: 48.9ms | ActiveRecord: 31.8ms)
+
+
+Started GET "/blogs/2/posts" for 127.0.0.1 at 2011-02-22 21:24:57 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"2"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 2
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (61.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (80.8ms)
+Completed 200 OK in 138ms (Views: 82.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-02-22 21:25:03 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (31.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (59.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (70.0ms)
+Completed 200 OK in 83ms (Views: 40.9ms | ActiveRecord: 32.0ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:25:07 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (55.9ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (74.1ms)
+Completed 200 OK in 132ms (Views: 76.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:25:57 -0800
+
+SyntaxError (/home/jtruesdell/code/ruby/weblog/app/controllers/posts_controller.rb:15: syntax error, unexpected ')', expecting ']'):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.6ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.2ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:26:03 -0800
+
+SyntaxError (/home/jtruesdell/code/ruby/weblog/app/controllers/posts_controller.rb:17: syntax error, unexpected tIDENTIFIER, expecting ')'
+    respond_to do |format|
+              ^):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (12.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.1ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:26:15 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+Completed   in 22ms
+
+ArgumentError (Unknown key(s): order_by):
+  app/controllers/posts_controller.rb:15:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (101.3ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (105.5ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:26:25 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Completed   in 22ms
+
+ArgumentError (Unknown key(s): order_by_desc):
+  app/controllers/posts_controller.rb:15:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (113.5ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (117.4ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:27:23 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_on DESC
+SQLite3::SQLException: no such column: created_on: SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_on DESC
+Completed   in 53ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: created_on: SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_on DESC):
+  app/controllers/posts_controller.rb:15:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (75.6ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (79.9ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:27:34 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_date DESC
+SQLite3::SQLException: no such column: created_date: SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_date DESC
+Completed   in 25ms
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: created_date: SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_date DESC):
+  app/controllers/posts_controller.rb:15:in `index'
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (102.7ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (106.2ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-02-22 21:28:14 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_at DESC
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (27.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (74.2ms)
+Completed 200 OK in 103ms (Views: 75.9ms | ActiveRecord: 2.5ms)

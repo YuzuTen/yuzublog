@@ -1,17 +1,18 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except =>  [ :index, :show ]
-
   before_filter :extract_blog
+
   protected
   def extract_blog
     @blog = Blog.find(params[:blog_id])
   end
 
+
   public
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+    @posts = Post.find_all_by_blog_id(params[:blog_id], :order => 'publish_on DESC, created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +34,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @post = Post.new(:active_user => current_user)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
@@ -48,7 +49,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
+    params[:post][:active_user]= current_user
     @post = Post.new(params[:post])
+    @post.blog=@blog
 
     respond_to do |format|
       if @post.save
@@ -64,7 +67,10 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
+    params[:post][:active_user]= current_user
+
     @post = Post.find(params[:id])
+    @post.blog=@blog
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
