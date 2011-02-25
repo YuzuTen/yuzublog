@@ -8,6 +8,8 @@ gem 'rails', '3.0.4'
 gem 'sqlite3'
 
 gem 'thin'
+gem 'cancan'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -18,6 +18,8 @@
     <td><%= blog.domain %></td>
     <td><%= blog.description %></td>
     <td><%= link_to 'Show', blog %></td>
+    <td><%= link_to 'Posts', :controller => :posts, :action => :index, :blog_id => blog.id %></td>
+
     <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
     <td><%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
