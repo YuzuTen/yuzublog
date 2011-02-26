@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  load_and_authorize_resource
   #only allow editing/creating blogs if you're authenticated.
   before_filter :authenticate_user!, :except =>  [ :index, :show ]
   #we'll also need to limit creating blogs to people with permission

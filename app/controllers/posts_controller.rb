@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate_user!, :except =>  [ :index, :show ]
   before_filter :extract_blog
 
