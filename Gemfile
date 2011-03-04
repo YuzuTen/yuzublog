@@ -5,9 +5,6 @@ gem 'rails', '3.0.5'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'rack-rescue', :git => 'https://github.com/hassox/rack-rescue.git'
-gem 'pancake'
-
 gem 'sqlite3'
 
 gem 'thin'
@@ -34,6 +31,7 @@ gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
 #oath enables facebook login, for one
 gem 'omniauth', :git => 'https://github.com/intridea/omniauth.git'
 gem 'oa-oauth', :require => "omniauth/oauth"
+
 #openid enables google login, and openid generally
 gem 'oa-openid', :require => 'omniauth/openid'
 

@@ -13656,3 +13656,292 @@ Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:16:21 -0800
 #<User:0x00000004c23a40>
   [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
 Completed   in 105ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:13:15 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190963 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (1.1ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 221ms (Views: 19.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/blogs/2" for 127.0.0.1 at 2011-03-04 13:13:18 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000003e61e98>
+  [1m[36mBlog Load (0.8ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = NULL )[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (1.1ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 146ms (Views: 8.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:13:19 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed   in 11ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-03-04 13:13:19 -0800
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered devise/sessions/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 36ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2011-03-04 13:13:21 -0800
+
+
+Started GET "/users/auth/facebook/callback?code=d674a671a70620722c018091-880895242%7CcsXt1Spk2QCNnMVQy6KUBFHB_q0" for 127.0.0.1 at 2011-03-04 13:13:21 -0800
+  Processing by OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"d674a671a70620722c018091-880895242|csXt1Spk2QCNnMVQy6KUBFHB_q0"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'beducky@hotmail.com' LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2011-03-04 19:00:14.479290', "current_sign_in_at" = '2011-03-04 21:13:22.503672', "sign_in_count" = 14, "updated_at" = '2011-03-04 21:13:22.504303' WHERE "users"."id" = 1
+Redirected to http://test.yuzuten.com:3000/blogs/2/edit
+Completed 302 Found in 62ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:13:22 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000003ee3448>
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 139ms
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:11 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 100ms (Views: 16.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:14:13 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x0000000419dfa8>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 106ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:13 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 102ms (Views: 17.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:14:14 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000003345ed8>
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 100ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:15 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 114ms (Views: 20.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:14:15 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000003c89aa8>
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 103ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:15 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered blogs/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 112ms (Views: 16.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:14:17 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000003ca6248>
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 100ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:17 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (2.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.8ms)
+Rendered devise/menu/_login_items.html.erb (0.8ms)
+Rendered blogs/index.html.erb within layouts/application (63.6ms)
+Completed 200 OK in 171ms (Views: 67.4ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/blogs/2/posts" for 127.0.0.1 at 2011-03-04 13:14:18 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"2"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 2 ORDER BY publish_on DESC, created_at DESC
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/index.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 123ms (Views: 21.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/blogs/2/posts/12/edit" for 127.0.0.1 at 2011-03-04 13:14:20 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (1.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 2 ) LIMIT 1[0m
+Completed   in 107ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:20 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered blogs/index.html.erb within layouts/application (42.8ms)
+Completed 200 OK in 134ms (Views: 45.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:53 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 114ms (Views: 18.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/blogs/1/edit" for 127.0.0.1 at 2011-03-04 13:14:55 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (2.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+#<User:0x000000041566a8>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE ("blogs_users".blog_id = 1 )[0m
+Rendered blogs/_form.html.erb (11.0ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered blogs/edit.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 167ms (Views: 19.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:14:59 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000003c8b538>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 98ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:14:59 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (44.3ms)
+Completed 200 OK in 150ms (Views: 47.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:18:16 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000003cd0ca0>
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 101ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:18:17 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered blogs/index.html.erb within layouts/application (43.5ms)
+Completed 200 OK in 132ms (Views: 46.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 13:18:53 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000003ce3008>
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 105ms
+Redirected to http://test.yuzuten.com:3000/
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 13:18:53 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered blogs/index.html.erb within layouts/application (44.1ms)
+Completed 200 OK in 133ms (Views: 46.9ms | ActiveRecord: 2.2ms)
