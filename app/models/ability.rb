@@ -2,8 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
-    logger=RAILS_DEFAULT_LOGGER
+   logger=::Rails.logger
     # Define abilities for the passed in user here. For example:
     #
     # The first argument to `can` is the action you are giving the user permission to do.
@@ -21,20 +20,19 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     user ||= User.new # guest user (not logged in)
-    logger.debug "User: #{user}"
     if user.role == 'admin'
       can :manage, :all
     else
       can :read, :all
       can :manage, Blog do |blog|
-        blog.authors.include? user
+        logger.debug user
+        user.blog_ids.include? blog.id
       end
       # I'm not sure I like the violation of the law of demeter here, but it is authorization 
       # code, and that does tend to happen.
       can :manage, Post do |post|
-        post.blog.authors.include? user
-     end
+        !(post.nil?) && (!post.blog.nil?) && !(post.blog.authors.nil?) && post.blog.authors.include?(user)
+      end
     end
-    
   end
 end

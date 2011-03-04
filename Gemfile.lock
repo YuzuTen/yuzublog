@@ -1,4 +1,21 @@
 GIT
+  remote: https://github.com/hassox/rack-rescue.git
+  revision: 3826e28d9704d734659ac16374ee8b740bd42e48
+  specs:
+    rack-rescue (0.1.2)
+      aws-s3
+      cancan
+      devise
+      nifty-generators
+      nokogiri
+      oa-oauth
+      oa-openid
+      rack-rescue
+      rails (= 3.0.5)
+      sqlite3
+      thin
+
+GIT
   remote: https://github.com/plataformatec/devise.git
   revision: bbaaefa995c3694d1462fc29768e9bb4d0661607
   specs:
@@ -11,12 +28,12 @@ GEM
   remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
-    actionmailer (3.0.4)
-      actionpack (= 3.0.4)
+    actionmailer (3.0.5)
+      actionpack (= 3.0.5)
       mail (~> 2.2.15)
-    actionpack (3.0.4)
-      activemodel (= 3.0.4)
-      activesupport (= 3.0.4)
+    actionpack (3.0.5)
+      activemodel (= 3.0.5)
+      activesupport (= 3.0.5)
       builder (~> 2.1.2)
       erubis (~> 2.6.6)
       i18n (~> 0.4)
@@ -24,21 +41,23 @@ GEM
       rack-mount (~> 0.6.13)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
-    activemodel (3.0.4)
-      activesupport (= 3.0.4)
+    activemodel (3.0.5)
+      activesupport (= 3.0.5)
       builder (~> 2.1.2)
       i18n (~> 0.4)
-    activerecord (3.0.4)
-      activemodel (= 3.0.4)
-      activesupport (= 3.0.4)
+    activerecord (3.0.5)
+      activemodel (= 3.0.5)
+      activesupport (= 3.0.5)
       arel (~> 2.0.2)
       tzinfo (~> 0.3.23)
-    activeresource (3.0.4)
-      activemodel (= 3.0.4)
-      activesupport (= 3.0.4)
-    activesupport (3.0.4)
+    activeresource (3.0.5)
+      activemodel (= 3.0.5)
+      activesupport (= 3.0.5)
+    activesupport (3.0.5)
     addressable (2.2.4)
-    arel (2.0.8)
+    any_view (0.2.3)
+      tilt (>= 1)
+    arel (2.0.9)
     aws-s3 (0.6.2)
       builder
       mime-types
@@ -54,7 +73,12 @@ GEM
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)
+    hashie (1.0.0)
+    http_router (0.2.5)
+      rack (>= 1.0)
+      url_mount (>= 0.2.1)
     i18n (0.5.0)
+    json (1.5.1)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -82,8 +106,19 @@ GEM
       faraday (~> 0.5.0)
       multi_json (~> 0.0.4)
     orm_adapter (0.0.4)
+    pancake (0.3.0)
+      activesupport (>= 3.0.0.beta4)
+      any_view (>= 0.2.3)
+      http_router (= 0.2.5)
+      json
+      rack (~> 1.1)
+      rack-accept-media-types
+      rack-test
+      thor
+      wrapt
     polyglot (0.3.1)
     rack (1.2.1)
+    rack-accept-media-types (0.9)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-openid (1.2.0)
@@ -91,17 +126,17 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-test (0.5.7)
       rack (>= 1.0)
-    rails (3.0.4)
-      actionmailer (= 3.0.4)
-      actionpack (= 3.0.4)
-      activerecord (= 3.0.4)
-      activeresource (= 3.0.4)
-      activesupport (= 3.0.4)
+    rails (3.0.5)
+      actionmailer (= 3.0.5)
+      actionpack (= 3.0.5)
+      activerecord (= 3.0.5)
+      activeresource (= 3.0.5)
+      activesupport (= 3.0.5)
       bundler (~> 1.0)
-      railties (= 3.0.4)
-    railties (3.0.4)
-      actionpack (= 3.0.4)
-      activesupport (= 3.0.4)
+      railties (= 3.0.5)
+    railties (3.0.5)
+      actionpack (= 3.0.5)
+      activesupport (= 3.0.5)
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
@@ -114,11 +149,17 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.14.6)
+    tilt (1.2.2)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    url_mount (0.2.1)
+      rack
     warden (1.0.3)
       rack (>= 1.0.0)
+    wrapt (0.1.7)
+      hashie
+      tilt
     xml-simple (1.0.14)
 
 PLATFORMS
@@ -132,6 +173,8 @@ DEPENDENCIES
   nokogiri
   oa-oauth
   oa-openid
-  rails (= 3.0.4)
+  pancake
+  rack-rescue!
+  rails (= 3.0.5)
   sqlite3
   thin
