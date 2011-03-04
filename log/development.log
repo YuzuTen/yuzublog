@@ -12994,3 +12994,665 @@ Migrating to AddRoleToUsers (20110225072946)
   [1m[35mSQL (9.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110221182109')
   [1m[36mSQL (9.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110219180607')[0m
   [1m[35mSQL (9.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110219175527')
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 10:51:44 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (28.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 170ms (Views: 17.5ms | ActiveRecord: 29.3ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-03-04 10:51:46 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_at DESC
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 121ms (Views: 24.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/blogs/1/posts/14/edit" for 127.0.0.1 at 2011-03-04 10:51:48 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"14"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 14 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 14 LIMIT 1
+Rendered posts/_form.html.erb (11.0ms)
+Rendered devise/menu/_registration_items.html.erb (0.8ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/edit.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 169ms (Views: 20.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/blogs/2/posts" for 127.0.0.1 at 2011-03-04 10:51:59 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"2"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 2 ORDER BY publish_on DESC, created_at DESC[0m
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/index.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 144ms (Views: 20.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/blogs/2/posts/12/edit" for 127.0.0.1 at 2011-03-04 10:52:01 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[35mUser Load (2.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 2 ) LIMIT 1
+Completed   in 200ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (269.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (275.5ms)
+
+
+Started GET "/blogs/2/posts/12/edit" for 127.0.0.1 at 2011-03-04 10:57:43 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 2 ) LIMIT 1
+Completed   in 221ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (255.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (261.0ms)
+
+
+Started GET "/blogs/2/posts/12/edit" for 127.0.0.1 at 2011-03-04 10:57:44 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 2 ) LIMIT 1[0m
+Completed   in 144ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (275.6ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (280.3ms)
+
+
+Started GET "/blogs/2/posts/12/edit" for 127.0.0.1 at 2011-03-04 10:58:09 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 2 ) LIMIT 1
+Completed   in 108ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (256.9ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (262.7ms)
+
+
+Started GET "/blogs/2/posts/12/edit" for 127.0.0.1 at 2011-03-04 10:58:25 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"2", "id"=>"12"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 12 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 2 ) LIMIT 1[0m
+Completed   in 110ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (254.2ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (258.4ms)
+
+
+Started GET "/blogs" for 127.0.0.1 at 2011-03-04 11:00:07 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190963 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.8ms)
+Rendered blogs/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 171ms (Views: 19.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:00:09 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+Completed   in 47ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-03-04 11:00:09 -0800
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (32.1ms)
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered devise/sessions/new.html.erb within layouts/application (40.1ms)
+Completed 200 OK in 66ms (Views: 43.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2011-03-04 11:00:11 -0800
+
+
+Started GET "/users/auth/facebook/callback?code=d674a671a70620722c018091-880895242%7CcsXt1Spk2QCNnMVQy6KUBFHB_q0" for 127.0.0.1 at 2011-03-04 11:00:11 -0800
+  Processing by OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"d674a671a70620722c018091-880895242|csXt1Spk2QCNnMVQy6KUBFHB_q0"}
+  [1m[35mUser Load (1.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'beducky@hotmail.com' LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-03-04 01:22:47.840586', "current_sign_in_at" = '2011-03-04 19:00:14.479290', "sign_in_count" = 13, "updated_at" = '2011-03-04 19:00:14.479772' WHERE "users"."id" = 1[0m
+Redirected to http://test.yuzuten.com:3000/blogs/2/edit
+Completed 302 Found in 95ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:00:14 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000003faf188>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 99ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (285.3ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (290.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 11:03:51 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered blogs/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 110ms (Views: 17.0ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/blogs/1/edit" for 127.0.0.1 at 2011-03-04 11:03:52 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+#<User:0x00000004205bf8>
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE ("blogs_users".blog_id = 1 )
+Rendered blogs/_form.html.erb (11.0ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/edit.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 152ms (Views: 19.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-03-04 11:03:55 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (2.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+#<User:0x00000004283738>
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 110ms (Views: 8.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/blogs/1/edit" for 127.0.0.1 at 2011-03-04 11:03:56 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+#<User:0x0000000420cb88>
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE ("blogs_users".blog_id = 1 )
+Rendered blogs/_form.html.erb (12.3ms)
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/edit.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 153ms (Views: 21.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:03:59 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000003fbc810>
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 103ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (273.3ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (306.8ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:07:44 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x000000040bf668>
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 101ms
+
+CanCan::AccessDenied (You are not authorized to access this page.):
+  
+
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (232.0ms)
+Rendered /usr/local/rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (263.5ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:07:58 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000004b55438>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 180ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:08:21 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (1.3ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000004c88788>
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 98ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:10:05 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (34.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000004f59980>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 136ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:10:14 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (1.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000004c60738>
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 104ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:10:20 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000004ff1be0>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 129ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-04 11:16:18 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 103ms (Views: 17.9ms | ActiveRecord: 43.9ms)
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:16:20 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1
+#<User:0x00000004ff8af8>
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )[0m
+Completed   in 134ms
+
+
+Started GET "/blogs/2/edit" for 127.0.0.1 at 2011-03-04 11:16:21 -0800
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (1.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 2 LIMIT 1[0m
+#<User:0x00000004c23a40>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+Completed   in 105ms

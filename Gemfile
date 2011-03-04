@@ -32,6 +32,7 @@ gem 'aws-s3', :require => 'aws/s3'
 gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
 
 #oath enables facebook login, for one
+gem 'omniauth', :git => 'https://github.com/intridea/omniauth.git'
 gem 'oa-oauth', :require => "omniauth/oauth"
 #openid enables google login, and openid generally
 gem 'oa-openid', :require => 'omniauth/openid'
