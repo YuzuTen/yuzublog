@@ -1,8 +1,11 @@
 require 'test_helper'
+require 'devise/test_helpers'
 
 class BlogsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
     @blog = blogs(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do

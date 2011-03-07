@@ -8,6 +8,6 @@ one:
 
 two:
   name: MyString
-  slug: MyString
+  slug: MyString2
   domain: MyString
   description: MyText

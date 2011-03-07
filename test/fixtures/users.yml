@@ -6,6 +6,8 @@
 #
 one:
   email: qwerty@yuiop.com
+  role: admin
+
 #
 two:
   email: az@b.com

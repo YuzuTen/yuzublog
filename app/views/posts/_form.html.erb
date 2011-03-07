@@ -1,4 +1,4 @@
-<%= form_for [@blog,@post ] do |f| %>
+<%= form_for [@blog,@post ], :html => { :multipart => true } do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -19,9 +19,22 @@
     <%= f.label :story %><br />
     <%= f.text_area :story %>
   </div>
+  
+  <%=f.fields_for :post_images do |builder| %>
+    <%if builder.object.new_record?%>
+      <div class="fileupload">
+        <%=builder.label :caption, "Image Caption" %>
+        <%=builder.text_field :caption %>
+
+        <%=builder.label :photo, "File" %>
+        <%=builder.file_field :photo %>
+      </div>
+    <% end %>
+  <% end %>
+  
   <div class="field">
     <%= f.label :publish_on %><br />
-    <%= f.date_select :publish_on %>
+    <%= f.datetime_select :publish_on %>
   </div>
   <div class="actions">
     <%= f.submit %>

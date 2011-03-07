@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except =>  [ :index, :show ]
   before_filter :extract_blog
-  load_and_authorize_resource #:through => :blog
+  load_and_authorize_resource :through => :blog
 
   protected
   def extract_blog
@@ -36,6 +36,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new(:active_user => current_user)
+    @post.post_images.build
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
@@ -45,6 +46,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    @post.post_images.build
   end
 
   # POST /posts

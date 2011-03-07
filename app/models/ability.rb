@@ -31,6 +31,7 @@ class Ability
       # I'm not sure I like the violation of the law of demeter here, but it is authorization 
       # code, and that does tend to happen.
       can :manage, Post do |post|
+        logger.debug "Blog: #{post.blog_id}"
         !(post.nil?) && (!post.blog.nil?) && !(post.blog.authors.nil?) && post.blog.authors.include?(user)
       end
     end

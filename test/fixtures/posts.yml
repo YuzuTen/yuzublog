@@ -2,10 +2,12 @@
 
 one:
   title: MyString
+  blog: one
   story: MyText
   publish_on: 2011-02-19
 
 two:
   title: MyString
+  blog: one
   story: MyText
   publish_on: 2011-02-19

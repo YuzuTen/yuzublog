@@ -11,6 +11,9 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :story
 
+  has_many :post_images, :dependent => :destroy
+  accepts_nested_attributes_for :post_images, :reject_if => lambda { |t| t['post_image'].nil? }
+
   def set_created_by
     #if explicitly set, don't override the created_by user
     self.created_by ||= @active_user

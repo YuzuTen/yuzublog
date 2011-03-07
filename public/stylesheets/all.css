@@ -8,3 +8,6 @@ ul.loginmenu li {
   display: inline;  
 }
 
+.error { color: red; }
+.notice { color : blue; }
+.warning { color: red; background-color: yellow; }

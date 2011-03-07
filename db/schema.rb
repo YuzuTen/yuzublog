@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110225072946) do
+ActiveRecord::Schema.define(:version => 20110307005653) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(:version => 20110225072946) do
   end
 
   add_index "blogs_users", ["blog_id"], :name => "index_blogs_users_on_blog_id"
+
+  create_table "post_images", :force => true do |t|
+    t.string   "caption"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -56,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20110225072946) do
     t.string   "family_name"
     t.string   "given_name"
     t.string   "role"
+    t.datetime "publish_on"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
