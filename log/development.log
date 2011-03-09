@@ -23154,3 +23154,156 @@ Rendered devise/menu/_registration_items.html.erb (0.6ms)
 Rendered devise/menu/_login_items.html.erb (0.6ms)
 Rendered posts/show.html.erb within layouts/application (5.3ms)
 Completed 200 OK in 195ms (Views: 9.5ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2011-03-08 23:08:40 -0800
+  Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered devise/registrations/edit.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 81ms (Views: 10.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-08 23:13:10 -0800
+  Processing by BlogsController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs"
+Rendered devise/menu/_registration_items.html.erb (1.0ms)
+Rendered devise/menu/_login_items.html.erb (0.7ms)
+Rendered blogs/index.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 153ms (Views: 24.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-03-08 23:13:12 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_at DESC[0m
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (52.6ms)
+Completed 200 OK in 174ms (Views: 55.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/blogs/1/posts/new" for 127.0.0.1 at 2011-03-08 23:13:16 -0800
+  Processing by PostsController#new as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+Blog: 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1[0m
+Rendered posts/_form.html.erb (10.8ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 170ms (Views: 18.4ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/blogs/1/posts" for 127.0.0.1 at 2011-03-08 23:13:23 -0800
+  Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"69oSpwO8gDJt/kTPG0NkUH6jJ3YJ6gjn9XD/jWLXZlc=", "post"=>{"title"=>"a", "story"=>"d", "post_images_attributes"=>{"0"=>{"caption"=>"asd"}}, "publish_on(1i)"=>"2011", "publish_on(2i)"=>"3", "publish_on(3i)"=>"9", "publish_on(4i)"=>"07", "publish_on(5i)"=>"13"}, "commit"=>"Create Post", "blog_id"=>"1"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+Completed   in 140ms
+
+
+Started GET "/blogs/1/posts" for 127.0.0.1 at 2011-03-08 23:13:59 -0800
+  Processing by PostsController#index as HTML
+  Parameters: {"blog_id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."blog_id" = 1 ORDER BY publish_on DESC, created_at DESC
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 155ms (Views: 21.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/blogs/1/posts/1/edit" for 127.0.0.1 at 2011-03-08 23:14:01 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.9ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".blog_id = 1) LIMIT 1[0m
+Blog: 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mPostImage Load (0.2ms)[0m  [1mSELECT "post_images".* FROM "post_images" WHERE ("post_images".post_id = 1)[0m
+Rendered posts/_form.html.erb (11.7ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/edit.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 175ms (Views: 19.5ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/blogs/1/posts/1" for 127.0.0.1 at 2011-03-08 23:14:06 -0800
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"69oSpwO8gDJt/kTPG0NkUH6jJ3YJ6gjn9XD/jWLXZlc=", "post"=>{"title"=>"test12", "story"=>"test\r\netasdf", "post_images_attributes"=>{"0"=>{"caption"=>"asdf"}}, "publish_on(1i)"=>"2011", "publish_on(2i)"=>"3", "publish_on(3i)"=>"21", "publish_on(4i)"=>"00", "publish_on(5i)"=>"00"}, "commit"=>"Update Post", "blog_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".blog_id = 1) LIMIT 1
+Blog: 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Post_images: {"title"=>"test12", "story"=>"test\r\netasdf", "post_images_attributes"=>{"0"=>{"caption"=>"asdf"}}, "publish_on(1i)"=>"2011", "publish_on(2i)"=>"3", "publish_on(3i)"=>"21", "publish_on(4i)"=>"00", "publish_on(5i)"=>"00", "active_user"=>#<User id: 1, email: "beducky@hotmail.com", encrypted_password: "$2a$10$vRugqrDZh2zwyxIFRvT2MuiZpQ/jOBX5GlYtkCr5Poe/...", reset_password_token: nil, remember_token: nil, remember_created_at: nil, sign_in_count: 19, current_sign_in_at: "2011-03-09 04:50:44", last_sign_in_at: "2011-03-07 18:51:47", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", created_at: "2011-02-21 21:41:13", updated_at: "2011-03-09 04:50:44", display_name: nil, family_name: nil, given_name: nil, role: nil, publish_on: nil>}
+Redirected to http://test.yuzuten.com:3000/blogs/1/posts/1
+Completed 302 Found in 158ms
+
+
+Started GET "/blogs/1/posts/1" for 127.0.0.1 at 2011-03-08 23:14:06 -0800
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".blog_id = 1) LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Blog: 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered posts/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 154ms (Views: 7.5ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/blogs/1/posts/1/edit" for 127.0.0.1 at 2011-03-08 23:14:50 -0800
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>"1", "id"=>"1"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".blog_id = 1) LIMIT 1
+Blog: 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mPostImage Load (0.1ms)[0m  SELECT "post_images".* FROM "post_images" WHERE ("post_images".post_id = 1)
+Rendered posts/_form.html.erb (12.0ms)
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/edit.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 177ms (Views: 19.8ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/blogs/1/posts/1" for 127.0.0.1 at 2011-03-08 23:14:54 -0800
+  Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"69oSpwO8gDJt/kTPG0NkUH6jJ3YJ6gjn9XD/jWLXZlc=", "post"=>{"title"=>"test12", "story"=>"test\r\netasdf", "post_images_attributes"=>{"0"=>{"caption"=>"asdf"}}, "publish_on(1i)"=>"2011", "publish_on(2i)"=>"3", "publish_on(3i)"=>"21", "publish_on(4i)"=>"00", "publish_on(5i)"=>"00"}, "commit"=>"Update Post", "blog_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (2.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 AND ("posts".blog_id = 1) LIMIT 1[0m
+Blog: 1
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE "users"."id" = 1 AND ("blogs_users".blog_id = 1 ) LIMIT 1[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Post_images: {"title"=>"test12", "story"=>"test\r\netasdf", "post_images_attributes"=>{"0"=>{"caption"=>"asdf"}}, "publish_on(1i)"=>"2011", "publish_on(2i)"=>"3", "publish_on(3i)"=>"21", "publish_on(4i)"=>"00", "publish_on(5i)"=>"00", "active_user"=>#<User id: 1, email: "beducky@hotmail.com", encrypted_password: "$2a$10$vRugqrDZh2zwyxIFRvT2MuiZpQ/jOBX5GlYtkCr5Poe/...", reset_password_token: nil, remember_token: nil, remember_created_at: nil, sign_in_count: 19, current_sign_in_at: "2011-03-09 04:50:44", last_sign_in_at: "2011-03-07 18:51:47", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", created_at: "2011-02-21 21:41:13", updated_at: "2011-03-09 04:50:44", display_name: nil, family_name: nil, given_name: nil, role: nil, publish_on: nil>}
+  [1m[36mPostImage Load (0.2ms)[0m  [1mSELECT "post_images".* FROM "post_images" WHERE ("post_images".post_id = 1)[0m
+Rendered posts/_form.html.erb (7.8ms)
+Rendered devise/menu/_registration_items.html.erb (0.7ms)
+Rendered devise/menu/_login_items.html.erb (0.5ms)
+Rendered posts/edit.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 227ms (Views: 53.1ms | ActiveRecord: 3.2ms)

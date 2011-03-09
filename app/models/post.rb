@@ -13,9 +13,7 @@ class Post < ActiveRecord::Base
 
   has_many :post_images, :dependent => :destroy, :class_name => 'PostImage'
 
-  accepts_nested_attributes_for :post_images, :reject_if => proc { |t| 
-    t.photo.nil?
-  }
+  accepts_nested_attributes_for :post_images
 
   def set_created_by
     #if explicitly set, don't override the created_by user
