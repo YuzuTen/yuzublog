@@ -36,6 +36,8 @@ gem 'oa-oauth', :require => "omniauth/oauth"
 #openid enables google login, and openid generally
 gem 'oa-openid', :require => 'omniauth/openid'
 
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
+
 gem 'nifty-generators'
 
 # Bundle gems for the local environment. Make sure to
@@ -43,5 +45,6 @@ gem 'nifty-generators'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'wirble'
+#  gem 'mongrel' not working for me
 #  gem 'webrat'
 end

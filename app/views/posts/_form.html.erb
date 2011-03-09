@@ -28,6 +28,9 @@
         <%=builder.label :photo, "File" %>
         <%=builder.file_field :photo %>
       </div>
+    <%else%>
+    <a href="<%=builder.object.photo.url%>"><%=image_tag builder.object.photo.url(:thumb), :title=>builder.object.caption%></a>
+
     <% end %>
   <% end %>
   
