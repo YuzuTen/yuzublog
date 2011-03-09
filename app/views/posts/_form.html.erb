@@ -22,10 +22,9 @@
   
   <%=f.fields_for :post_images do |builder| %>
     <%if builder.object.new_record?%>
-      <div class="fileupload">
+      <div class="fileupload field">
         <%=builder.label :caption, "Image Caption" %>
         <%=builder.text_field :caption %>
-
         <%=builder.label :photo, "File" %>
         <%=builder.file_field :photo %>
       </div>

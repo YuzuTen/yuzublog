@@ -52,7 +52,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    params[:post][:active_user]= current_user
     @post = Post.new(params[:post])
     @post.blog=@blog
 
@@ -76,6 +75,7 @@ class PostsController < ApplicationController
     @post.blog=@blog
 
     respond_to do |format|
+      logger.debug "Post_images: #{ params[:post]}"
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@blog,@post], :notice => 'Post was successfully updated.') }
         format.xml  { head :ok }

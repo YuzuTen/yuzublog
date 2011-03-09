@@ -11,8 +11,11 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :story
 
-  has_many :post_images, :dependent => :destroy
-  accepts_nested_attributes_for :post_images, :reject_if => lambda { |t| t['post_image'].nil? }
+  has_many :post_images, :dependent => :destroy, :class_name => 'PostImage'
+
+  accepts_nested_attributes_for :post_images, :reject_if => proc { |t| 
+    t.photo.nil?
+  }
 
   def set_created_by
     #if explicitly set, don't override the created_by user
@@ -23,5 +26,6 @@ class Post < ActiveRecord::Base
     #updated_by should always reflect the actual user who did the update
     self.updated_by = @active_user
   end
+
 
 end
