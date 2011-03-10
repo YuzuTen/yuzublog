@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: 6a10b358bff2562a5c9b1585f0c8122b540966a3
+  revision: 1738ea1dcaf65860c53088cc62ad7f0887e629ca
   specs:
     paperclip (2.3.8)
       activerecord
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/intridea/omniauth.git
-  revision: b2530dfb0a12232ada0bbd6106934cc87dd1be91
+  revision: a29a5e6d1f119465767fcfbe62bf9f34339c795b
   specs:
     oa-basic (0.2.0.beta5)
       multi_json (~> 0.0.2)
