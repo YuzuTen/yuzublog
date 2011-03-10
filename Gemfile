@@ -40,6 +40,10 @@ gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-
 
 gem 'nifty-generators'
 
+#needed for Heroku; Imagemagick is enough on a local machine, apparently
+gem 'rmagick'
+
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:

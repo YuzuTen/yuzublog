@@ -25846,3 +25846,27 @@ Rendered devise/menu/_registration_items.html.erb (0.5ms)
 Rendered devise/menu/_login_items.html.erb (0.6ms)
 Rendered blogs/index.html.erb within layouts/application (12.6ms)
 Completed 200 OK in 140ms (Views: 15.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-09 16:30:30 -0800
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+Rendered devise/menu/_registration_items.html.erb (0.6ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 120ms (Views: 19.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/blogs/1" for 127.0.0.1 at 2011-03-09 16:30:32 -0800
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+#<User:0x00000004641a28>
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".id FROM "blogs" INNER JOIN "blogs_users" ON "blogs".id = "blogs_users".blog_id WHERE ("blogs_users".user_id = 1 )
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 1 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Rendered blogs/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 146ms (Views: 7.6ms | ActiveRecord: 1.2ms)
