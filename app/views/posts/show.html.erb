@@ -16,5 +16,12 @@
 </p>
 
 
+<p>
+ <b>In</b>
+  <%@post.category_list.each  do |c|%>
+    <%=c%>
+    <%end%>
+</p>
+
 <%= link_to 'Edit', edit_blog_post_path(@blog,@post) %> |
 <%= link_to 'Back', blog_posts_path(@blog) %>

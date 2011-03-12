@@ -13,7 +13,9 @@ class Post < ActiveRecord::Base
 
   has_many :post_images, :dependent => :destroy, :class_name => 'PostImage'
 
-  accepts_nested_attributes_for :post_images
+  accepts_nested_attributes_for :post_images, :reject_if => lambda { |i| i[:photo].blank? }
+
+  acts_as_taggable_on :categories
 
   def set_created_by
     #if explicitly set, don't override the created_by user

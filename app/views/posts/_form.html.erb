@@ -20,6 +20,11 @@
     <%= f.text_area :story %>
   </div>
   
+  <div class="field">
+    <%= f.label :categories %><br />
+    <%= f.text_field :category_list %>
+  </div>
+
   <%=f.fields_for :post_images do |builder| %>
     <%if builder.object.new_record?%>
       <div class="fileupload field">
