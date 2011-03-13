@@ -8,42 +8,42 @@ GIT
 
 GIT
   remote: https://github.com/intridea/omniauth.git
-  revision: a29a5e6d1f119465767fcfbe62bf9f34339c795b
+  revision: 7b3644fd629117f10aeab52823cbb24a8970a0d6
   specs:
-    oa-basic (0.2.0.beta5)
+    oa-basic (0.2.0)
       multi_json (~> 0.0.2)
       nokogiri (~> 1.4.2)
-      oa-core (= 0.2.0.beta5)
+      oa-core (= 0.2.0)
       rest-client (~> 1.6.0)
-    oa-core (0.2.0.beta5)
+    oa-core (0.2.0)
       rack (~> 1.1)
-    oa-enterprise (0.2.0.beta5)
+    oa-enterprise (0.2.0)
       net-ldap (~> 0.1.1)
       nokogiri (~> 1.4.2)
-      oa-core (= 0.2.0.beta5)
+      oa-core (= 0.2.0)
       pyu-ruby-sasl (~> 0.0.3.1)
       rubyntlm (~> 0.1.1)
-    oa-more (0.2.0.beta5)
+    oa-more (0.2.0)
       multi_json (~> 0.0.2)
-      oa-core (= 0.2.0.beta5)
+      oa-core (= 0.2.0)
       rest-client (~> 1.6.0)
-    oa-oauth (0.2.0.beta5)
+    oa-oauth (0.2.0)
       multi_json (~> 0.0.2)
       nokogiri (~> 1.4.2)
-      oa-core (= 0.2.0.beta5)
+      oa-core (= 0.2.0)
       oauth (~> 0.4.0)
       oauth2 (~> 0.1.1)
-    oa-openid (0.2.0.beta5)
-      oa-core (= 0.2.0.beta5)
+    oa-openid (0.2.0)
+      oa-core (= 0.2.0)
       rack-openid (~> 1.2.0)
       ruby-openid-apps-discovery
-    omniauth (0.2.0.beta5)
-      oa-basic (= 0.2.0.beta5)
-      oa-core (= 0.2.0.beta5)
-      oa-enterprise (= 0.2.0.beta5)
-      oa-more (= 0.2.0.beta5)
-      oa-oauth (= 0.2.0.beta5)
-      oa-openid (= 0.2.0.beta5)
+    omniauth (0.2.0)
+      oa-basic (= 0.2.0)
+      oa-core (= 0.2.0)
+      oa-enterprise (= 0.2.0)
+      oa-more (= 0.2.0)
+      oa-oauth (= 0.2.0)
+      oa-openid (= 0.2.0)
 
 GIT
   remote: https://github.com/mbleigh/acts-as-taggable-on.git
@@ -53,9 +53,9 @@ GIT
 
 GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: 63b72cd512b14ebe5bbf48eb80d1aba39978735e
+  revision: 15d195d2f064508e074cdd3c3733c94fbdd281c4
   specs:
-    devise (1.2.rc)
+    devise (1.2.rc2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -98,7 +98,7 @@ GEM
       xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
-    cancan (1.5.1)
+    cancan (1.6.0)
     daemons (1.1.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -127,6 +127,7 @@ GEM
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
+    rack-google_analytics (1.0.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-openid (1.2.0)
@@ -183,6 +184,7 @@ DEPENDENCIES
   oa-openid
   omniauth!
   paperclip!
+  rack-google_analytics
   rails (= 3.0.5)
   rmagick
   sqlite3
