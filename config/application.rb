@@ -38,7 +38,7 @@ module Weblog
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    config.middleware.use Rack::GoogleAnalytics, :tracker => "UA-52437-4"
+    config.middleware.use Rack::GoogleAnalytics, :web_property_id => "UA-52437-4"
 
   end
 end
