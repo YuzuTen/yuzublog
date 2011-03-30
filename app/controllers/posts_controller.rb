@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_filter :extract_blog
   load_and_authorize_resource :through => :blog
 
-
   def tag_cloud
     @categories = Post.tag_counts_on(:categories)
   end

@@ -5,10 +5,8 @@ Weblog::Application.routes.draw do
     resources :posts
   end
 
-  get "say/hello"
-
-  get "say/goodbye"
-
+  match 'api' => 'api#api'
+  
   root :to => 'blogs#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -10,8 +10,12 @@ gem 'sqlite3'
 gem 'thin'
 gem 'cancan'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'rubyjedi-soap4r'
+gem 'actionwebservice', :git => 'https://github.com/mkoentopf/actionwebservice.git'
 
 gem 'rack-google_analytics', :require => "rack/google_analytics"
+
+gem 'rack-rpc'
 
 # Use unicorn as the web server
 # gem 'unicorn'

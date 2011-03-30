@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
 
   has_many :post_images, :dependent => :destroy, :class_name => 'PostImage'
 
-  accepts_nested_attributes_for :post_images, :reject_if => lambda { |i| i[:photo].blank? }
+  accepts_nested_attributes_for :post_images, :reject_if => lambda { |i| i[:phtoto].blank? }
 
   acts_as_taggable_on :categories
 
@@ -27,5 +27,7 @@ class Post < ActiveRecord::Base
     self.updated_by = @active_user
   end
 
-
+  def permalink_url(*params)
+    return 'test only'#link_to(:blog_id=>blog_id,:post_id=>self.id)
+  end
 end

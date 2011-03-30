@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'rack/rpc'
+#require File.expand_path('../../app/apis/metaweblog_api', __FILE__)
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -13,7 +15,7 @@ module Weblog
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/apis)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -39,6 +41,9 @@ module Weblog
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     config.middleware.use Rack::GoogleAnalytics, :web_property_id => "UA-52437-4"
-
+#    puts MetaweblogApi
+#    config.middleware.use Rack::RPC::Endpoint, lambda { MetaweblogApi.new} , :path=>'/api'
+#    config.gem 'xmlrpc-endpoint'
   end
 end
+
