@@ -1,4 +1,4 @@
-module MetaWeblogStructs
+module MetaweblogStructs
   class Article < ActionWebService::Struct
     member :description,        :string
     member :title,              :string
@@ -17,6 +17,13 @@ module MetaWeblogStructs
     member :dateCreated,        :time
   end
 
+  class Category < ActionWebService::Struct
+    member :title, :string
+    member :description, :string
+    member :htmlUrl, :string
+    member :rssUrl, :string
+  end
+
   class MediaObject < ActionWebService::Struct
     member :bits, :string
     member :name, :string
@@ -33,11 +40,25 @@ class MetaweblogApi <  ActionWebService::API::Base
 
   api_method :getCategories,
   :expects => [ {:blogid => :string}, {:username => :string}, {:password => :string} ],
-  :returns => [[:string]]
+  :returns => [[MetaweblogStructs::Category]]
 
   api_method :getRecentPosts,
     :expects => [ {:blogid => :string}, {:username => :string}, {:password => :string}, {:numberOfPosts => :int} ],
-    :returns => [[MetaWeblogStructs::Article]]
+    :returns => [[MetaweblogStructs::Article]]
+
+  api_method :newPost,
+  :expects => [ {:blogid => :string}, {:username => :string}, {:password => :string}, {:struct => MetaweblogStructs::Article}, { :publish=>:string} ],
+    :returns => [:string]
+
+  api_method :editPost,
+  :expects => [ {:postid => :string}, {:username => :string}, {:password => :string}, {:struct => MetaweblogStructs::Article}, { :publish=>:string} ],
+    :returns => [:string]
+
+
+  api_method :getPost,
+  :expects => [ {:id => :string}, {:username => :string}, {:password => :string} ],
+    :returns => [MetaweblogStructs::Article]
+
   
 end
 

@@ -17,15 +17,19 @@ class MetaweblogService < ActionWebService::Base
   end
 
   def newPost(blogid,username,password,struct,publish)
-    #returns string
+    post=post_dto_from(post)
+    post.save
+    post.id
   end
 
   def editPost(postid,username,password,struct,publish)
-    #returns true
+    post=post_dto_from(post)
+    post.save
   end
 
   def getPost(postid,username,password)
-    #returns struct matching rss item
+    post=Post.find_by_id(postid)
+    post_dto_from(post)
   end
 
   def newMediaObject(blogid,username,password,struct)
@@ -35,8 +39,7 @@ class MetaweblogService < ActionWebService::Base
 
   def getCategories(blogid,username,password)
     #returns struct (description,htmlUrl,rssUrl)
-#    logger.info "getCategories called"
-    Post.tag_counts_on(:categories).collect { |c| c.name }
+    Post.tag_counts_on(:categories).map { |c| MetaweblogStructs::Category.new(:description => c.name,:title => c.name, :htmlUrl => "/#{c.name}", :rssUrl => "/#{c.name}.rss")  }
   end
 
   def getRecentPosts(blogid,username,password,numberOfPosts)
@@ -47,7 +50,7 @@ class MetaweblogService < ActionWebService::Base
   end
 
   def post_dto_from(post)
-    MetaWeblogStructs::Article.new(
+    MetaweblogStructs::Article.new(
                                    :description       => post.story,
                                    :title             => post.title,
                                    :postid            => post.id.to_s,
