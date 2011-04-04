@@ -2,6 +2,10 @@ Weblog::Application.routes.draw do
   devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :blogs do
+    member do
+      get 'rsd'
+      get 'wlwmanifest'
+    end
     resources :posts
   end
 

@@ -1,3 +1,10 @@
+<%content_for :title do
+    @blog.name
+  end
+%>
+<%content_for :blog_head do %>
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%=rsd_blog_url @blog, :format=>'xml' %>" />
+<%end%>
 <p id="notice"><%= notice %></p>
 
 <p>

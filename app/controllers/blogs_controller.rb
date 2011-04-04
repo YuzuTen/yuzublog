@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   #only allow editing/creating blogs if you're authenticated.
-  before_filter :authenticate_user!, :except =>  [ :index, :show ]
-  load_and_authorize_resource
+  before_filter :authenticate_user!, :except =>  [ :index, :show, :rsd, :wlwmanifest ]
+  load_and_authorize_resource :except => [ :rsd, :wlwmanifest ]
 
   #we'll also need to limit creating blogs to people with permission
   # and limit editing blogs to admins or contributing users, but
@@ -15,6 +15,21 @@ class BlogsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @blogs }
+    end
+  end
+  
+  def rsd
+    logger.info("rsd called")
+    @blog = Blog.find(params[:id])
+    respond_to do |format|
+      format.xml
+    end
+  end
+  
+  def wlwmanifest
+    @blog = Blog.find(params[:id])
+    respond_to do |format|
+        format.xml
     end
   end
 

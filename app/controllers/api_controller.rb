@@ -5,6 +5,8 @@ class ApiController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   web_service :metaWeblog, MetaweblogService.new(self)
+  web_service :blogger, BloggerService.new(self)
+
 #  web_service_scaffold :index
 
   # def index
