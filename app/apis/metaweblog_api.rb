@@ -35,7 +35,7 @@ module MetaweblogStructs
   end
 end
 
-class MetaweblogApi <  ActionWebService::API::Base
+class MetaweblogApi < ActionWebService::API::Base
   inflect_names false
 
   api_method :getCategories,
@@ -52,13 +52,10 @@ class MetaweblogApi <  ActionWebService::API::Base
 
   api_method :editPost,
   :expects => [ {:postid => :string}, {:username => :string}, {:password => :string}, {:struct => MetaweblogStructs::Article}, { :publish=>:string} ],
-    :returns => [:string]
-
+    :returns => [:bool]
 
   api_method :getPost,
   :expects => [ {:id => :string}, {:username => :string}, {:password => :string} ],
     :returns => [MetaweblogStructs::Article]
-
-  
 end
 

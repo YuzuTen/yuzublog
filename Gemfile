@@ -15,8 +15,6 @@ gem 'actionwebservice', :git => 'https://github.com/mkoentopf/actionwebservice.g
 
 gem 'rack-google_analytics', :require => "rack/google_analytics"
 
-gem 'rack-rpc'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -25,7 +23,6 @@ gem 'rack-rpc'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
-# gem 'ruby-debug19'
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -44,8 +41,6 @@ gem 'oa-openid', :require => 'omniauth/openid'
 
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 
-gem 'nifty-generators'
-
 #needed for Heroku; Imagemagick is enough on a local machine, apparently
 gem 'rmagick'
 
@@ -55,6 +50,8 @@ gem 'rmagick'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'wirble'
-#  gem 'mongrel' not working for me
-#  gem 'webrat'
+  gem 'ruby-debug19'
+  
+  #  gem 'mongrel' not working for me
+  gem 'webrat'
 end

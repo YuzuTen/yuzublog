@@ -1,4 +1,4 @@
-class BloggerService < ActionWebService::Base
+class BloggerService < ParameterizedAuthBasedService
   web_service_api BloggerApi
   attr_accessor :controller
 
@@ -12,9 +12,6 @@ class BloggerService < ActionWebService::Base
 
   def getUsersBlogs(appkey,username,password)
     user=User.find_by_email(username)
-    # member :url, :string
-    # member :blogid, :string
-    # member :blogName, :string
     user.blogs.map{|blog| BloggerStructs::Blog.new(:url=>blog.url,:blogid=>blog.id,:blogName=>blog.name)}
   end
 end

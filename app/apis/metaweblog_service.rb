@@ -1,7 +1,11 @@
-class MetaweblogService < ActionWebService::Base
+class MetaweblogService < ParameterizedAuthBasedService
   web_service_api MetaweblogApi
 
   attr_accessor :controller
+
+  def identify_blog(blogid)
+    @blog=Blog.find_by_id(blogid) 
+  end
 
   def initialize(controller)
     @controller = controller
@@ -11,19 +15,19 @@ class MetaweblogService < ActionWebService::Base
     controller.send(:this_blog)
   end
 
-
-  def hello_world
-    "Hello, World"
-  end
-
   def newPost(blogid,username,password,struct,publish)
-    post=post_dto_from(post)
+    identify_blog(blogid)
+    post=Post.new(:story => struct.description, :title => struct.title, :blog => @blog, :categories=>struct.categories)
     post.save
     post.id
   end
 
   def editPost(postid,username,password,struct,publish)
-    post=post_dto_from(post)
+    post=Post.find_by_id(postid)
+    post.story=struct.description
+    post.title=struct.title
+    post.categories=struct.categories
+    
     post.save
   end
 
@@ -36,7 +40,6 @@ class MetaweblogService < ActionWebService::Base
     #returns struct
   end
   
-
   def getCategories(blogid,username,password)
     #returns struct (description,htmlUrl,rssUrl)
     Post.tag_counts_on(:categories).map { |c| MetaweblogStructs::Category.new(:description => c.name,:title => c.name, :htmlUrl => "/#{c.name}", :rssUrl => "/#{c.name}.rss")  }
@@ -44,8 +47,6 @@ class MetaweblogService < ActionWebService::Base
 
   def getRecentPosts(blogid,username,password,numberOfPosts)
     #returns array of structs
-#    logger.info "getRecentPosts called"
-
     Post.find(:all).collect { |p| post_dto_from(p) }
   end
 
