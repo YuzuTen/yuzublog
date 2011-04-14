@@ -1,11 +1,7 @@
-<%content_for :title do
-    @blog.name
-  end
-%>
+<%title "Posts in #{@blog.name}"%>
 <%content_for :blog_head do %>
   <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%=rsd_blog_url @blog, :format=>'xml' %>" />
 <%end%>
-<h1>Listing posts</h1>
 
 <table>
   <tr>
