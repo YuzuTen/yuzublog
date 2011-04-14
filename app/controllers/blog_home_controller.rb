@@ -15,7 +15,7 @@ class BlogHomeController < ApplicationController
   
   public
   def index
-    @posts=@blog.posts.recent
+    @posts=@blog.posts.recent.paginate(:per_page => 10,:page => params[:page])
   end
 
   def about

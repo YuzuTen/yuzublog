@@ -12,7 +12,10 @@
     <%=post.story.html_safe%>
   </div>
   <%end%>
-
+  
+  <div class="pagination">
+    <%=will_paginate @posts%>
+  </div>
 </div>
 
 <div class="tags">

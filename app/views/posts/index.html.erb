@@ -2,7 +2,7 @@
 <%content_for :blog_head do %>
   <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%=rsd_blog_url @blog, :format=>'xml' %>" />
 <%end%>
-
+<%=will_paginate @posts%>
 <table>
   <tr>
     <th>Title</th>
@@ -24,7 +24,7 @@
   </tr>
 <% end %>
 </table>
-
+<%=page_entries_info @posts %>
 <br />
 
 <%= link_to 'New Post', new_post_path %>

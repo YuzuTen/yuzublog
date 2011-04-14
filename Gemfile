@@ -14,7 +14,11 @@ gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'rubyjedi-soap4r'
 gem 'actionwebservice', :git => 'https://github.com/mkoentopf/actionwebservice.git'
 
+#Middleware solution that injects google analytics script just before </body>
 gem 'rack-google_analytics', :require => "rack/google_analytics"
+
+#Pagination support
+gem 'will_paginate', "~> 3.0.pre2"
 
 # Use unicorn as the web server
 # gem 'unicorn'

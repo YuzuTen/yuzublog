@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   before_update :set_updated_by
 
   attr_accessor :active_user
-  
+
   validates_presence_of :title
   validates_presence_of :story
 
