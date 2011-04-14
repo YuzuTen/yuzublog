@@ -1,7 +1,4 @@
-<%content_for :title do
-    @blog.name
-  end
-%>
+<%title "Blog Details: #{@blog.name}"%>
 <%content_for :blog_head do %>
   <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%=rsd_blog_url @blog, :format=>'xml' %>" />
 <%end%>
@@ -23,11 +20,16 @@
 </p>
 
 <p>
+  <b>Subdomain:</b>
+  <%= @blog.subdomain %>
+</p>
+
+<p>
   <b>Description:</b>
   <%= @blog.description %>
 </p>
 
-<%= link_to 'New Post', new_blog_post_path(@blog) %>
+<%= link_to 'New Post', new_post_url(:subdomain=>@blog.subdomain) %>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

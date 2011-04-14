@@ -7,6 +7,7 @@ gem 'rails', '3.0.5'
 
 gem 'sqlite3'
 
+gem 'jquery-rails'
 gem 'thin'
 gem 'cancan'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'

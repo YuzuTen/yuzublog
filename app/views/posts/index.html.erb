@@ -1,3 +1,10 @@
+<%content_for :title do
+    @blog.name
+  end
+%>
+<%content_for :blog_head do %>
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%=rsd_blog_url @blog, :format=>'xml' %>" />
+<%end%>
 <h1>Listing posts</h1>
 
 <table>
@@ -15,13 +22,13 @@
     <td><%= post.title %></td>
     <td><%= post.story %></td>
     <td><%= post.publish_on %></td>
-    <td><%= link_to 'Show', [@blog,post] %></td>
-    <td><%= link_to 'Edit', edit_blog_post_path(@blog,post) %></td>
-    <td><%= link_to 'Destroy', [@blog,post], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', [post] %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', [post], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Post', new_blog_post_path(@blog) %>
+<%= link_to 'New Post', new_post_path %>

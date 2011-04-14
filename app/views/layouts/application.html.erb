@@ -11,16 +11,17 @@
   </head>
   <body>
     <div id="container">
-      <ul class="loginmenu">
-        <%= render 'devise/menu/registration_items' %>
-        <%= render 'devise/menu/login_items' %>
-      </ul>
-      
+      <div id="loginpanel">
+        <ul class="loginmenu">
+          <%= render 'devise/menu/registration_items' %>
+          <%= render 'devise/menu/login_items' %>
+        </ul>
+      </div>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
-      <%= yield %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </body>
 </html>

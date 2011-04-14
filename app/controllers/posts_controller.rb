@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 
   protected
   def extract_blog
-    @blog = Blog.find(params[:blog_id])
+    @blog = Blog.find_by_subdomain(request.subdomain)
+#    @blog = Blog.find_by_id!(params[:id])
   end
 
   
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.find_all_by_blog_id(params[:blog_id], :order => 'publish_on DESC, created_at DESC')
+    @posts =@blog.posts( :order => 'publish_on DESC, created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
+    @post = @blog.posts.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,14 +50,14 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = @blog.posts.find(params[:id])
     @post.post_images.build
   end
 
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    @post = @blog.posts.new(params[:post])
     @post.blog=@blog
 
     respond_to do |format|
@@ -75,8 +76,7 @@ class PostsController < ApplicationController
   def update
     params[:post][:active_user]= current_user
 
-    @post = Post.find(params[:id])
-    @post.blog=@blog
+    @post = @blog.posts.find(params[:id])
 
     respond_to do |format|
       logger.debug "Post_images: #{ params[:post]}"
@@ -93,11 +93,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
-    @post = Post.find(params[:id])
+    @post = @blog.posts.find(params[:id])
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(blog_posts_url) }
+      format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
   end

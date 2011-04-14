@@ -1,0 +1,36 @@
+@blog	app/controllers/blogs_controller.rb	24
+@blog	app/controllers/blogs_controller.rb	35
+@blog	app/controllers/blogs_controller.rb	46
+@blog	app/controllers/blogs_controller.rb	69
+@blog	app/controllers/blogs_controller.rb	85
+BlogsController	app/controllers/blogs_controller.rb	1
+bucket	app/models/post_image.rb	4
+content_for	app/helpers/layout_helper.rb	/^    content_for(:head) { javascript_include_tag(*a/
+content_tag	app/helpers/error_messages_helper.rb	/^      content_tag(:div, :class => "error_messages"/
+content_tag	app/helpers/error_messages_helper.rb	/^        content_tag(:h2, options[:header_message])/
+content_type	app/models/post_image.rb	7
+error_messages_for	app/helpers/error_messages_helper.rb	/^      @template.error_messages_for(@object, option/
+FLASH_NOTICE_KEYS	app/helpers/application_helper.rb	3
+formatted_messages	app/helpers/application_helper.rb	7
+html	app/controllers/blogs_controller.rb	60
+html	app/controllers/blogs_controller.rb	76
+html	app/controllers/posts_controller.rb	68
+html	app/controllers/posts_controller.rb	88
+options	app/helpers/error_messages_helper.rb	4
+params	app/controllers/posts_controller.rb	77
+photo	app/models/post_image.rb	7
+@post	app/controllers/posts_controller.rb	32
+@post	app/controllers/posts_controller.rb	43
+@post	app/controllers/posts_controller.rb	53
+@post	app/controllers/posts_controller.rb	97
+Post	app/models/post.rb	1
+PostImage	app/models/post_image.rb	1
+PostsController	app/controllers/posts_controller.rb	1
+@show_title	app/helpers/layout_helper.rb	8
+title	app/helpers/layout_helper.rb	/^  def title(page_title, show_title = true)$/
+xml	app/controllers/blogs_controller.rb	58
+xml	app/controllers/blogs_controller.rb	61
+xml	app/controllers/blogs_controller.rb	77
+xml	app/controllers/posts_controller.rb	66
+xml	app/controllers/posts_controller.rb	69
+xml	app/controllers/posts_controller.rb	89

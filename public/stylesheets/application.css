@@ -1,5 +1,5 @@
 body {
-  background-color: #4B7399;
+  background-color: #F8F077;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -72,4 +72,8 @@ a {
 
 .error_messages ul {
   margin: 0;
+}
+
+#loginpanel {
+   text-align: right;
 }

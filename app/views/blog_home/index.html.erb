@@ -1,0 +1,26 @@
+<%title "#{@blog.name} : #{@blog.slug}" %>
+<%content_for :blog_head do %>
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="<%=rsd_blog_url @blog, :format=>'xml' %>" />
+<%end%>
+
+<div class="posts recent">
+  <h1>Recent Posts</h1>
+  <%@posts.take(10).each do |post| %>
+
+  <h2><%=link_to post.title, post%></h2>
+  <div class="story">
+    <%=post.story.html_safe%>
+  </div>
+  <%end%>
+
+</div>
+
+<div class="tags">
+  <h1 class="tags">Tags</h1>
+  <%tag_cloud(@tags,%w(tags1 tags2 tags3 tags4 tags tags5)) do |tag, css_class| 
+# tag.name, { action => :tag, :id => tag.name}*/
+%>
+    <%=link_to tag.name,'',:class=> css_class %>
+    <% end%>
+</div>
+

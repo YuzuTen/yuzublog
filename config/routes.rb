@@ -1,17 +1,44 @@
 Weblog::Application.routes.draw do
+  get "blog_home/index"
+
+  get "blog_home/about"
+
+  get "blog_home/contact"
+
   devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-  resources :blogs do
-    member do
-      get 'rsd'
-      get 'wlwmanifest'
+  match 'api' => 'api#api'
+
+  constraints(NetworkDomainConstraint) do
+    resources :blogs do
+      member do
+        get 'rsd'
+        get 'wlwmanifest'
+      end
     end
+    root :to => 'blogs#index' 
+  end
+  
+  constraints(:subdomain) do
     resources :posts
+    root :to => 'blog_home#index'
   end
 
-  match 'api' => 'api#api'
-  
-  root :to => 'blogs#index'
+#  resources :posts, :controller => 'personalized_posts'#PersonalizedPostsController
+#  constraints(SubDomainConstraint) do
+#    resources :posts
+#  end
+  # resources :blogs do
+  #   member do
+  #     get 'rsd'
+  #     get 'wlwmanifest'
+  #   end
+  #   resources :posts
+  # end
+ 
+
+#  resources :posts
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -65,7 +92,4 @@ Weblog::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end

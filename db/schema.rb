@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110310063315) do
+ActiveRecord::Schema.define(:version => 20110406232858) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110310063315) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subdomain"
   end
 
   create_table "blogs_users", :id => false, :force => true do |t|

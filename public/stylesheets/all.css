@@ -11,3 +11,10 @@ ul.loginmenu li {
 .error { color: red; }
 .notice { color : blue; }
 .warning { color: red; background-color: yellow; }
+
+.tags1 { font-size: 0.8em; }
+.tags2 { font-size: 1.0em; }
+.tags3 { font-size: 1.2em; }
+.tags4 { font-size: 1.4em; }
+.tags5 { font-size: 1.6em; }
+

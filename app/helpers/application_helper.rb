@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include ActsAsTaggableOn::TagsHelper
   #flash messages example borrowed from RubyPond
   FLASH_NOTICE_KEYS = [:error, :notice, :warning]
 
