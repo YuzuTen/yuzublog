@@ -1,8 +1,6 @@
 class AddSubdomainToBlogs < ActiveRecord::Migration
   def self.up
-    change_table :blogs do |t|
-      t.string :subdomain, :default => nil
-    end
+    add_column :blogs, :subdomain, :string, :default => nil
   end
 
   def self.down
