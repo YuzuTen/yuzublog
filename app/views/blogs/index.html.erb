@@ -21,9 +21,8 @@
     <td><%= blog.subdomain %></td>
     <td><%= blog.description %></td>
     <td><%= link_to 'Show', blog %></td>
-    <td><%= link_to 'Posts', posts_path(:subdomain=>blog.subdomain)%></td>
-
     <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+    <td><%= link_to 'Posts', posts_url(:subdomain => blog.subdomain) %>
     <td><%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
