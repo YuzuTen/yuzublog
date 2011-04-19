@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   #only allow editing/creating blogs if you're authenticated.
   before_filter :authenticate_user!, :except =>  [ :index, :show, :rsd, :wlwmanifest ]
 #  load_and_authorize_resource :except => [ :rsd, :wlwmanifest ]
-  before_filter :identify_blog, :except =>  [ :index,:new ]
+  before_filter :identify_blog, :except =>  [ :index,:new, :create ]
 
   def identify_blog
     logger.info("identify blog")
@@ -75,12 +75,13 @@ class BlogsController < ApplicationController
   # POST /blogs.xml
   def create
     @blog = Blog.new(params[:blog])
-
+    
     respond_to do |format|
       if @blog.save
         format.html { redirect_to(@blog, :notice => 'Blog was successfully created.') }
         format.xml  { render :xml => @blog, :status => :created, :location => @blog }
       else
+        @users = User.all
         format.html { render :action => "new" }
         format.xml  { render :xml => @blog.errors, :status => :unprocessable_entity }
       end

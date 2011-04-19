@@ -6,6 +6,7 @@ class BlogsControllerTest < ActionController::TestCase
   setup do
     @blog = blogs(:one)
     sign_in users(:one)
+    @users= User.all
   end
 
   test "should get index" do

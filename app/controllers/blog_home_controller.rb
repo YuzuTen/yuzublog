@@ -1,14 +1,13 @@
 class BlogHomeController < ApplicationController
-  load_and_authorize_resource :blog
   before_filter :find_blog
+  load_and_authorize_resource :blog
   protected
 
   def find_blog
     if request.subdomain
       @blog=Blog.find_by_subdomain(request.subdomain)
-    else
-      @blog=Blog.find_by_id(params[:id])
     end
+    @blog=Blog.find_by_id!(params[:blog_id]) if @blog.nil?
     @tags=@blog.posts.tag_counts_on(:categories)
   end
 

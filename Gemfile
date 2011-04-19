@@ -1,16 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
-
+gem 'rails', '3.0.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
 gem 'jquery-rails'
-gem 'thin'
-gem 'cancan'
+
+#file upload/attachments
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+
+#web services features
 gem 'rubyjedi-soap4r'
 gem 'actionwebservice', :git => 'https://github.com/mkoentopf/actionwebservice.git'
 
@@ -20,14 +21,12 @@ gem 'rack-google_analytics', :require => "rack/google_analytics"
 #Pagination support
 gem 'will_paginate', "~> 3.0.pre2"
 
-# Use unicorn as the web server
-# gem 'unicorn'
+#Web server dependencies
+gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -35,6 +34,7 @@ gem 'nokogiri'
 
 gem 'aws-s3', :require => 'aws/s3'
 
+#authentication
 gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
 
 #oath enables facebook login, for one
@@ -44,6 +44,11 @@ gem 'oa-oauth', :require => "omniauth/oauth"
 #openid enables google login, and openid generally
 gem 'oa-openid', :require => 'omniauth/openid'
 
+#authorization
+gem 'cancan'
+
+
+#Plugins for application features
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 
 #needed for Heroku; Imagemagick is enough on a local machine, apparently
@@ -56,7 +61,12 @@ gem 'rmagick'
 group :development, :test do
   gem 'wirble'
   gem 'ruby-debug19'
-  
+  gem 'rspec'
+  gem 'cucumber'  
   #  gem 'mongrel' not working for me
   gem 'webrat'
+  # Use unicorn as the web server
+  gem 'unicorn'
+
 end
+

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except =>  [ :index, :show ]
-  before_filter :extract_blog
+  before_filter :extract_blog, :except => [:new, :create ]
   load_and_authorize_resource :through => :blog
 
   def tag_cloud
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   protected
   def extract_blog
     @blog = Blog.find_by_subdomain(request.subdomain)
-#    @blog = Blog.find_by_id!(params[:id])
+    @blog = Blog.find_by_id!(params[:blog_id]) if @blog.nil?
   end
 
   
@@ -58,7 +58,8 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = @blog.posts.new(params[:post])
-    @post.blog=@blog
+
+    logger.info("Post belongs to #{@post.blog}")
 
     respond_to do |format|
       if @post.save
@@ -82,7 +83,7 @@ class PostsController < ApplicationController
       logger.debug "Post_images: #{ params[:post]}"
       if @post.update_attributes(params[:post])
         format.html { redirect_to([@post], :notice => 'Post was successfully updated.') }
-        format.xml  { head :ok }
+        fomarmat.xml  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }

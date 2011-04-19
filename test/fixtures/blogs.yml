@@ -4,10 +4,14 @@ one:
   name: MyString
   slug: MyString
   domain: MyString
+  subdomain: jagaimo1
   description: MyText
+  authors: one
 
 two:
   name: MyString
   slug: MyString2
   domain: MyString
+  subdomain: jagaimo2
   description: MyText
+  authors: one

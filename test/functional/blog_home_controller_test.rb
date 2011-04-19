@@ -1,18 +1,24 @@
 require 'test_helper'
 
 class BlogHomeControllerTest < ActionController::TestCase
+  setup do
+    @blog = blogs(:one)
+  end
+
   test "should get index" do
-    get :index
+    get :index, {:blog_id => @blog.id}
     assert_response :success
   end
 
   test "should get about" do
-    get :about
+    get :about,  {:blog_id =>  @blog.id }
+
     assert_response :success
   end
 
   test "should get contact" do
-    get :contact
+    get :contact,  {:blog_id =>  @blog.id }
+
     assert_response :success
   end
 

@@ -11,13 +11,14 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index, :blog_id => @post.blog_id
+    
+    get :index, :blog_id => @blog.id
     assert_response :success
     assert_not_nil assigns(:posts)
   end
 
   test "should get new" do
-    get :new, :blog_id => @post.blog_id 
+    get :new, :blog_id => @blog.id 
     assert_response :success
   end
 
@@ -49,6 +50,6 @@ class PostsControllerTest < ActionController::TestCase
       delete :destroy, :id => @post.to_param, :blog_id => @post.blog_id
     end
 
-    assert_redirected_to blog_posts_path :blog_id => @post.blog_id
+    assert_redirected_to posts_path
   end
 end
