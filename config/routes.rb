@@ -1,9 +1,4 @@
 Weblog::Application.routes.draw do
-  get "blog_home/index"
-
-  get "blog_home/about"
-
-  get "blog_home/contact"
 
   devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
@@ -21,23 +16,11 @@ Weblog::Application.routes.draw do
   
   constraints(:subdomain) do
     resources :posts
-    root :to => 'blog_home#index'
+    match 'about', :to => 'home#about'
+    match 'contact', :to => 'home#contact'
+    root :to => 'home#index'
   end
 
-#  resources :posts, :controller => 'personalized_posts'#PersonalizedPostsController
-#  constraints(SubDomainConstraint) do
-#    resources :posts
-#  end
-  # resources :blogs do
-  #   member do
-  #     get 'rsd'
-  #     get 'wlwmanifest'
-  #   end
-  #   resources :posts
-  # end
- 
-
-#  resources :posts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

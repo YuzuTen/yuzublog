@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BlogHomeControllerTest < ActionController::TestCase
+class HomeControllerTest < ActionController::TestCase
   setup do
     @blog = blogs(:one)
   end

@@ -1,6 +1,6 @@
-class BlogHomeController < ApplicationController
+class HomeController < ApplicationController
   before_filter :find_blog
-  load_and_authorize_resource :blog
+
   protected
 
   def find_blog

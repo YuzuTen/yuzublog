@@ -1,17 +1,11 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except =>  [ :index, :show ]
-  before_filter :extract_blog, :except => [:new, :create ]
-  load_and_authorize_resource :through => :blog
-
+  before_filter :extract_blog
+  authorize_resource :through=>:blog
   def tag_cloud
     @categories = Post.tag_counts_on(:categories)
   end
 
-  protected
-  def extract_blog
-    @blog = Blog.find_by_subdomain(request.subdomain)
-    @blog = Blog.find_by_id!(params[:blog_id]) if @blog.nil?
-  end
 
   
   public
@@ -63,8 +57,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to([@post], :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => [@blog,@post], :status => :created, :location => @post }
+        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+        format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }

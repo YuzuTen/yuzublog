@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     redirect_to_previous
   end
   
+  protected
+  def extract_blog
+    @blog = Blog.find_by_subdomain(request.subdomain)
+    @blog = Blog.find_by_id!(params[:blog_id]) if @blog.nil?
+  end
+
   def redirect_to_previous
     referrer=request.env['HTTP_REFERER']
     
