@@ -10,7 +10,10 @@ class Blog < ActiveRecord::Base
   validates_exclusion_of :subdomain, :in=> %w(admin, test),
                          :message => 'is unavailable.'
   validates_presence_of :name
-  default_url_options[:host]='http://test.yuzuten.com:3000'
+
+  belongs_to :site
+  
+  default_url_options[:host]=site.hostname
   
   def url
     blog_url(self)
