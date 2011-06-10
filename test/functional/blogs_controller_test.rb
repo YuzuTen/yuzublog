@@ -22,7 +22,7 @@ class BlogsControllerTest < ActionController::TestCase
 
   test "should create blog" do
     assert_difference('Blog.count') do
-      post :create, :blog => { :subdomain => "test123", :name => "123blog", :authors => [User.first]}
+      post :create, :blog => { :site => Site.new({:hostname => 'foo.lvh.me'}), :name => "123blog", :authors => [User.first]}
     end
 
     assert_redirected_to blog_path(assigns(:blog))

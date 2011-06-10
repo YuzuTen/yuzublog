@@ -10,16 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406232858) do
+ActiveRecord::Schema.define(:version => 20110610003921) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
     t.string   "slug"
-    t.string   "domain"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "subdomain"
+    t.integer  "site_id"
   end
 
   create_table "blogs_users", :id => false, :force => true do |t|
@@ -49,6 +48,12 @@ ActiveRecord::Schema.define(:version => 20110406232858) do
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
     t.integer  "blog_id"
+  end
+
+  create_table "sites", :force => true do |t|
+    t.string   "hostname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|

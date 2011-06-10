@@ -15,13 +15,8 @@
 </p>
 
 <p>
-  <b>Domain:</b>
-  <%= @blog.domain %>
-</p>
-
-<p>
-  <b>Subdomain:</b>
-  <%= @blog.subdomain %>
+  <b>Hostname:</b>
+  <%= @blog.site.hostname %>
 </p>
 
 <p>
@@ -29,7 +24,7 @@
   <%= @blog.description %>
 </p>
 
-<%= link_to 'New Post', new_post_url(:subdomain=>@blog.subdomain) %>
+<%= link_to 'New Post', new_post_url(:host => @blog.site.hostname) %>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

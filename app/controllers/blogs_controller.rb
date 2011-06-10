@@ -2,20 +2,6 @@ class BlogsController < ApplicationController
   #only allow editing/creating blogs if you're authenticated.
   before_filter :authenticate_user!, :except =>  [ :index, :show, :rsd, :wlwmanifest ]
   load_and_authorize_resource :except => [ :rsd, :wlwmanifest ]
-#  before_filter :identify_blog, :except =>  [ :index,:new, :create ]
-
-  def identify_blog
-    logger.info("identify blog")
-    @blog = Blog.find_by_domain(request.subdomain) unless request.subdomain.nil?
-    unless @blog
-      logger.info("Trying to find by id#{@blog}")
-      @blog = Blog.find_by_id!(params[:id]) unless @blog
-    end
-  end
-
-  # we'll also need to limit creating blogs to people with permission
-  # and limit editing blogs to admins or contributing users, but
-  # I don't want to worry about that yet.
 
   # GET /blogs
   # GET /blogs.xml

@@ -7,24 +7,25 @@ class PostsControllerTest < ActionController::TestCase
   setup do
     @post = posts(:one)
     @blog = blogs(:one)
+    @request.host=@blog.site.hostname
     sign_in users(:one)
   end
 
   test "should get index" do
     
-    get :index, :blog_id => @blog.id
+    get :index
     assert_response :success
     assert_not_nil assigns(:posts)
   end
 
   test "should get new" do
-    get :new, :blog_id => @blog.id 
+    get :new
     assert_response :success
   end
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, :post => @post.attributes, :blog_id => @blog.id
+      post :create, :post => @post.attributes
     end
 
     assert_redirected_to post_path(assigns(:post))

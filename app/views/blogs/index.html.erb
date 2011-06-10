@@ -4,8 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Slug</th>
-    <th>Domain</th>
-    <th>Subdomain</th>
 
     <th>Description</th>
     <th></th>
@@ -17,12 +15,10 @@
   <tr>
     <td><%= blog.name %></td>
     <td><%= blog.slug %></td>
-    <td><%= blog.domain %></td>
-    <td><%= blog.subdomain %></td>
     <td><%= blog.description %></td>
     <td><%= link_to 'Show', blog %></td>
     <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Posts', posts_url(:subdomain => blog.subdomain) %>
+    <td><%= link_to 'Posts', posts_url(:host=> blog.site.hostname) %>
     <td><%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

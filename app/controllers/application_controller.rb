@@ -8,10 +8,15 @@ class ApplicationController < ActionController::Base
   end
   
   protected
-  def extract_blog
-    @blog = Blog.find_by_subdomain(request.subdomain)
-    @blog = Blog.find_by_id!(params[:blog_id]) if @blog.nil?
+
+  def find_blog
+    blogs=Blog.find_by_hostname(request.host)
+    throw NotFoundException if blogs.empty?
+    @blog=blogs.first
+
+    @tags=@blog.posts.tag_counts_on(:categories)
   end
+
 
   def redirect_to_previous
     referrer=request.env['HTTP_REFERER']
