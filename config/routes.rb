@@ -11,6 +11,7 @@ Weblog::Application.routes.draw do
     end
   end
 
+  # If the domain looks like www.*, it's considered a "network" domain
   constraints(NetworkDomainConstraint) do
     root :to => 'blogs#index' 
   end
@@ -18,6 +19,9 @@ Weblog::Application.routes.draw do
   resources :posts
   match 'about', :to => 'home#about'
   match 'contact', :to => 'home#contact'
+
+  # home#index will figure out if there's a blog associated with the hostname, and redirect to blogs#index if
+  # it can't find an association.
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
