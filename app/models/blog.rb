@@ -10,7 +10,7 @@ class Blog < ActiveRecord::Base
   def self.find_by_hostname(hostname)
     site=Site.find_by_hostname(hostname)
     if site.nil?
-      throw ActiveRecord::RecordNotFound
+      raise ActiveRecord::RecordNotFound
     else
       site.blogs
     end

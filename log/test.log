@@ -3695,3 +3695,228 @@ Completed 200 OK in 19ms (Views: 10.9ms | ActiveRecord: 2.5ms)
 Rendered devise/menu/_registration_items.html.erb (0.2ms)
 Rendered devise/menu/_login_items.html.erb (0.2ms)
 Completed 200 OK in 13ms (Views: 5.0ms | ActiveRecord: 2.5ms)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "blogs"
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  Processing by BlogsController#create as HTML
+  Parameters: {"blog"=>{"site"=>#<Site id: nil, hostname: "foo.lvh.me", created_at: nil, updated_at: nil>, "name"=>"123blog", "authors"=>[#<User id: 298486374, email: "az@b.com", encrypted_password: "", reset_password_token: nil, remember_token: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: "2011-06-10 19:32:08", updated_at: "2011-06-10 19:32:08", display_name: nil, family_name: nil, given_name: nil, role: nil, publish_on: nil>]}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT 1 FROM "sites" WHERE ("sites"."hostname" = 'foo.lvh.me') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "sites" ("hostname", "created_at", "updated_at") VALUES ('foo.lvh.me', '2011-06-10 19:32:08.645672', '2011-06-10 19:32:08.645672')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "blogs" ("name", "slug", "description", "created_at", "updated_at", "site_id") VALUES ('123blog', NULL, NULL, '2011-06-10 19:32:08.649134', '2011-06-10 19:32:08.649134', 980190963)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "blogs_users" ("blog_id", "user_id") VALUES (980190963, 298486374)
+Redirected to http://test.host/blogs/980190963
+Completed 302 Found in 103ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "blogs"[0m
+  Processing by BlogsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM "blogs" WHERE "blogs"."id" = 980190962[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT * FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE ("blogs_users".blog_id = 980190962 )
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM "blogs_users" WHERE "blogs_users"."blog_id" = 980190962 AND "blogs_users"."user_id" IN (980190962)[0m
+Redirected to http://test.host/blogs
+Completed 302 Found in 11ms
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "blogs"
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Processing by BlogsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE ("blogs_users".blog_id = 980190962 )
+Rendered blogs/_form.html.erb (8.2ms)
+Rendered devise/menu/_registration_items.html.erb (0.8ms)
+Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 68ms (Views: 59.8ms | ActiveRecord: 15.2ms)
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Processing by BlogsController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs"[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."id" = 298486374 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (0.2ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 6.9ms | ActiveRecord: 2.8ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users"
+  Processing by BlogsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "blogs_users" ON "users".id = "blogs_users".user_id WHERE ("blogs_users".blog_id = NULL )[0m
+Rendered blogs/_form.html.erb (4.5ms)
+Rendered devise/menu/_registration_items.html.erb (0.2ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 3.9ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.7ms)[0m  SELECT "users".* FROM "users"
+  Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+show called
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (0.2ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 11ms (Views: 4.8ms | ActiveRecord: 3.6ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users"
+  Processing by BlogsController#update as HTML
+  Parameters: {"blog"=>{"created_at"=>Fri, 10 Jun 2011 19:32:08 UTC +00:00, "description"=>"MyText", "id"=>980190962, "name"=>"MyString", "site_id"=>980190962, "slug"=>"MyString", "updated_at"=>Fri, 10 Jun 2011 19:32:08 UTC +00:00}, "id"=>"980190962"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+WARNING: Can't mass-assign protected attributes: id
+Redirected to http://test.host/blogs/980190962
+Completed 302 Found in 8ms
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+  Processing by HomeController#about as HTML
+  Parameters: {"blog_id"=>980190962}
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (16.0ms)
+Rendered devise/menu/_login_items.html.erb (0.3ms)
+Completed 200 OK in 28ms (Views: 20.6ms | ActiveRecord: 3.4ms)
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+  Processing by HomeController#contact as HTML
+  Parameters: {"blog_id"=>980190962}
+  [1m[35mSite Load (0.2ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1[0m
+Rendered devise/menu/_registration_items.html.erb (0.5ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.5ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+  Processing by HomeController#index as HTML
+  Parameters: {"blog_id"=>980190962}
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE ("posts".blog_id = 980190962) AND (posts.publish_on is not null and posts.publish_on <= '2011-06-10 19:32:07.771446') ORDER BY posts.publish_on DESC LIMIT 10 OFFSET 0
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'categories') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts" WHERE ("posts".blog_id = 980190962))) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id[0m
+Rendered devise/menu/_registration_items.html.erb (0.4ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 11.4ms | ActiveRecord: 1.1ms)
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+  Processing by HomeController#index as HTML
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'something.unknown.com' LIMIT 1
+Redirected to http://something.unknown.com/blogs
+Completed 302 Found in 1ms
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Processing by PostsController#create as HTML
+  Parameters: {"post"=>{"blog_id"=>980190962, "created_at"=>Fri, 10 Jun 2011 19:32:08 UTC +00:00, "created_by_id"=>nil, "id"=>980190962, "publish_on"=>Sat, 19 Feb 2011, "story"=>"MyText", "title"=>"MyString", "updated_at"=>Fri, 10 Jun 2011 19:32:08 UTC +00:00, "updated_by_id"=>nil}}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1
+WARNING: Can't mass-assign protected attributes: id
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+Post belongs to #<Blog:0x00000101afa328>
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "posts" ("title", "story", "publish_on", "created_at", "updated_at", "created_by_id", "updated_by_id", "blog_id") VALUES ('MyString', 'MyText', '2011-02-19', '2011-06-10 19:32:08.000000', '2011-06-10 19:32:08.000000', NULL, NULL, 980190962)
+Redirected to http://mysite1.com/posts/980190963
+Completed 302 Found in 16ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
+  Processing by PostsController#destroy as HTML
+  Parameters: {"blog_id"=>980190962, "id"=>"980190962"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 AND ("posts".blog_id = 980190962) LIMIT 1
+  [1m[36mPostImage Load (0.1ms)[0m  [1mSELECT "post_images".* FROM "post_images" WHERE ("post_images".post_id = 980190962)[0m
+  [1m[35mActsAsTaggableOn::Tagging Load (0.1ms)[0m  SELECT "taggings".* FROM "taggings" WHERE ("taggings".taggable_id = 980190962 AND "taggings".taggable_type = 'Post')
+  [1m[36mActsAsTaggableOn::Tagging Load (0.2ms)[0m  [1mSELECT "taggings"."id" AS t0_r0, "taggings"."tag_id" AS t0_r1, "taggings"."taggable_id" AS t0_r2, "taggings"."taggable_type" AS t0_r3, "taggings"."tagger_id" AS t0_r4, "taggings"."tagger_type" AS t0_r5, "taggings"."context" AS t0_r6, "taggings"."created_at" AS t0_r7, "tags"."id" AS t1_r0, "tags"."name" AS t1_r1 FROM "taggings" LEFT OUTER JOIN "tags" ON "tags"."id" = "taggings"."tag_id" WHERE ("taggings".taggable_id = 980190962 AND "taggings".taggable_type = 'Post' AND (taggings.tag_id = tags.id AND taggings.context = 'categories'))[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = 980190962
+Redirected to http://mysite1.com/posts
+Completed 302 Found in 32ms
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#edit as HTML
+  Parameters: {"blog_id"=>980190962, "id"=>"980190962"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 AND ("posts".blog_id = 980190962) LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".taggable_id = 980190962) AND ("taggings".taggable_type = 'Post')) AND (taggings.context = 'categories' AND taggings.tagger_id IS NULL)
+  [1m[36mPostImage Load (0.1ms)[0m  [1mSELECT "post_images".* FROM "post_images" WHERE ("post_images".post_id = 980190962)[0m
+Rendered posts/_form.html.erb (13.2ms)
+Rendered devise/menu/_registration_items.html.erb (0.2ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 32ms (Views: 19.1ms | ActiveRecord: 8.4ms)
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#index as HTML
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE ("posts".blog_id = 980190962) ORDER BY publish_on DESC, created_at DESC LIMIT 10 OFFSET 0[0m
+Rendered devise/menu/_registration_items.html.erb (0.2ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 6.4ms | ActiveRecord: 3.0ms)
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#new as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1[0m
+  [1m[35mBlog Load (0.1ms)[0m  SELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".taggable_id = NULL) AND ("taggings".taggable_type = 'Post')) AND (taggings.context = 'categories' AND taggings.tagger_id IS NULL)[0m
+Rendered posts/_form.html.erb (7.4ms)
+Rendered devise/menu/_registration_items.html.erb (0.3ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 18ms (Views: 10.9ms | ActiveRecord: 2.3ms)
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE "blogs"."id" = 980190962 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."id" = 980190962 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1[0m
+  Processing by PostsController#show as HTML
+  Parameters: {"blog_id"=>980190962, "id"=>"980190962"}
+  [1m[35mSite Load (0.1ms)[0m  SELECT "sites".* FROM "sites" WHERE "sites"."hostname" = 'mysite1.com' LIMIT 1
+  [1m[36mBlog Load (0.1ms)[0m  [1mSELECT "blogs".* FROM "blogs" WHERE ("blogs".site_id = 980190962) LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 980190962 LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 980190962 AND ("posts".blog_id = 980190962) LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags".id = "taggings".tag_id WHERE (("taggings".taggable_id = 980190962) AND ("taggings".taggable_type = 'Post')) AND (taggings.context = 'categories' AND taggings.tagger_id IS NULL)
+Rendered devise/menu/_registration_items.html.erb (0.2ms)
+Rendered devise/menu/_login_items.html.erb (0.2ms)
+Completed 200 OK in 12ms (Views: 4.9ms | ActiveRecord: 2.4ms)

@@ -6,15 +6,17 @@ class ApplicationController < ActionController::Base
     flash[:error]= "You do not have permission to perform the requested action."
     redirect_to_previous
   end
-  
+
   protected
 
   def find_blog
-    blogs=Blog.find_by_hostname(request.host)
-    throw NotFoundException if blogs.empty?
-    @blog=blogs.first
-
-    @tags=@blog.posts.tag_counts_on(:categories)
+    begin
+      blogs=Blog.find_by_hostname(request.host)
+      @blog=blogs.first
+      @tags=@blog.posts.tag_counts_on(:categories)
+    rescue ActiveRecord::RecordNotFound
+      redirect_to blogs_url
+    end
   end
 
 

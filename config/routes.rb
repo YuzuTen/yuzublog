@@ -4,13 +4,14 @@ Weblog::Application.routes.draw do
 
   match 'api' => 'api#api'
 
-  constraints(NetworkDomainConstraint) do
-    resources :blogs do
-      member do
-        get 'rsd'
-        get 'wlwmanifest'
-      end
+  resources :blogs do
+    member do
+      get 'rsd'
+      get 'wlwmanifest'
     end
+  end
+
+  constraints(NetworkDomainConstraint) do
     root :to => 'blogs#index' 
   end
   
