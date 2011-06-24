@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin moderator author]
 
-  has_and_belongs_to_many :blogs
+  has_and_belongs_to_many :blogs, :class_name=> 'Yuzublog::Blog'
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmmable, :lockable and :timeoutable

@@ -1,4 +1,4 @@
-<%= form_for [@post ], :html => { :multipart => true } do |f| %>
+<%= form_for @post, :html => { :multipart => true } do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -27,6 +27,7 @@
   </div>
 
   <%=f.fields_for :post_images do |builder| %>
+  <%unless builder.object.nil?  %>
     <%if builder.object.new_record?%>
       <div class="fileupload field">
         <%=builder.label :caption, "Image Caption" %>
@@ -38,8 +39,8 @@
     <a href="<%=builder.object.photo.url%>"><%=image_tag builder.object.photo.url(:thumb), :title=>builder.object.caption%></a>
 
     <% end %>
+    <% end %>
   <% end %>
-  
   <div class="field">
     <%= f.label :publish_on %><br />
     <%= f.datetime_select :publish_on %>

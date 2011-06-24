@@ -1,5 +1,5 @@
 class Site < ActiveRecord::Base
-  has_many :blogs
+  has_many :blogs, :class_name => 'Yuzublog::Blog'
 
   validates_uniqueness_of :hostname
   validates_presence_of :hostname

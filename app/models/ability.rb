@@ -1,6 +1,10 @@
 class Ability
   include CanCan::Ability
 
+  def self.version
+    :engine
+  end
+
   def initialize(user)
    logger=::Rails.logger
     # Define abilities for the passed in user here. For example:
@@ -18,6 +22,7 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    logger.info "cancan called"
 
     user ||= User.new # guest user (not logged in)
 
@@ -25,13 +30,16 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :manage, Blog do |blog|
+      can :manage, Yuzublog::Blog do |blog|
         logger.debug user
-        user.blog_ids.include? blog.id
+
+        puts 'Yuzublog engine ability'
+        #user.blog_ids.include? blog.id
+        true
       end
       # I'm not sure I like the violation of the law of demeter here, but it is authorization 
       # code, and that does tend to happen.
-      can :manage, Post do |post|
+      can :manage, Yuzublog::Post do |post|
         logger.debug "Blog: #{post.blog_id}"
         !(post.nil?) && (!post.blog.nil?) && !(post.blog.authors.nil?) && post.blog.authors.include?(user)
       end

@@ -1,24 +1,26 @@
 class ApplicationController < ActionController::Base
-  include UrlHelper
   protect_from_forgery
+
+  include UrlHelper
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error]= "You do not have permission to perform the requested action."
     redirect_to_previous
   end
 
+
   protected
 
   def find_blog
+    logger.info "Unnamespaced yuzuten applicationcontroller find_blog called"
     begin
-      blogs=Blog.find_by_hostname(request.host)
+      blogs=Yuzublog::Blog.find_by_hostname(request.host)
       @blog=blogs.first
       @tags=@blog.posts.tag_counts_on(:categories)
     rescue ActiveRecord::RecordNotFound
       redirect_to blogs_url
     end
   end
-
 
   def redirect_to_previous
     referrer=request.env['HTTP_REFERER']

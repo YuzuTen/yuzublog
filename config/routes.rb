@@ -1,80 +1,28 @@
-Weblog::Application.routes.draw do
+::Rails.application.routes.draw do
 
-  devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+#  devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   match 'api' => 'api#api'
 
-  resources :blogs do
+  #  scope :module => 'yuzublog' do
+  resources :blogs, :module=> 'yuzublog' do # :controller => 'yuzublog/blogs' 
     member do
       get 'rsd'
       get 'wlwmanifest'
     end
   end
+  # end
+  resources :posts, :controller => 'yuzublog/posts'
 
   # If the domain looks like www.*, it's considered a "network" domain
-  constraints(NetworkDomainConstraint) do
-    root :to => 'blogs#index' 
-  end
-  
-  resources :posts
+  #constraints(NetworkDomainConstraint) do
+  #  root :to => 'blogs#index' 
+  #end
+
   match 'about', :to => 'home#about'
   match 'contact', :to => 'home#contact'
 
   # home#index will figure out if there's a blog associated with the hostname, and redirect to blogs#index if
   # it can't find an association.
-  root :to => 'home#index'
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
+ # root :to => 'home#index'
 end

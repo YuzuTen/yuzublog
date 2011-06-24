@@ -1,3 +1,3 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 
-run Weblog::Application
+run Yuzublog::Application

@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+#gem 'rails'
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
@@ -13,13 +13,13 @@ gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
 #web services features
 gem 'rubyjedi-soap4r'
-gem 'actionwebservice', :git => 'https://github.com/mkoentopf/actionwebservice.git'
+#gem 'actionwebservice', :git => 'https://github.com/mkoentopf/actionwebservice.git'
 
 #Middleware solution that injects google analytics script just before </body>
 gem 'rack-google_analytics', :require => "rack/google_analytics"
 
 #Pagination support
-gem 'will_paginate', "~> 3.0.pre2"
+gem 'will_paginate', :git=>'https://github.com/JackDanger/will_paginate.git'
 
 #Web server dependencies
 gem 'thin'
@@ -54,6 +54,7 @@ gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-
 #needed for Heroku; Imagemagick is enough on a local machine, apparently
 gem 'rmagick'
 
+#gem 'yuzuten_blogengine', :path => '~/code/yuzuten_blogengine'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
