@@ -11,6 +11,10 @@ class Blog < ActiveRecord::Base
   validates_presence_of :slug
   validates_presence_of :description
 
+  has_friendly_id :name, :use_slug => true, :scope => :site,
+  :default_locale => :en,
+  :reserved_words => %w(index new session login logout users refinery admin images wymiframe)
+  
   def default_hostname
     return nil if site.nil?
     if defined? site.hostnames

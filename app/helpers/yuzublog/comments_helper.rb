@@ -1,0 +1,2 @@
+module Yuzublog::CommentsHelper
+end

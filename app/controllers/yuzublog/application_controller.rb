@@ -17,7 +17,7 @@ module Yuzublog
       begin
         blogs=Blog.find_by_hostname(request.host)
         @blog=blogs.first
-        @tags=@blog.posts.tag_counts_on(:categories)
+#        @tags=@blog.posts.tag_counts_on(:categories)
       rescue ActiveRecord::RecordNotFound
         redirect_to blogs_url
       end

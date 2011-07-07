@@ -18,6 +18,8 @@ gem 'rubyjedi-soap4r'
 #Middleware solution that injects google analytics script just before </body>
 gem 'rack-google_analytics', :require => "rack/google_analytics"
 
+gem 'acts_as_commentable', :git => 'https://github.com/jackdempsey/acts_as_commentable.git'
+
 #Pagination support
 gem 'will_paginate', :git=>'https://github.com/JackDanger/will_paginate.git'
 

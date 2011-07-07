@@ -30,7 +30,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :manage, Yuzublog::Blog do |blog|
+      can :manage, Blog do |blog|
         logger.debug user
 
         puts 'Yuzublog engine ability'
@@ -39,7 +39,7 @@ class Ability
       end
       # I'm not sure I like the violation of the law of demeter here, but it is authorization 
       # code, and that does tend to happen.
-      can :manage, Yuzublog::Post do |post|
+      can :manage, Post do |post|
         logger.debug "Blog: #{post.blog_id}"
         !(post.nil?) && (!post.blog.nil?) && !(post.blog.authors.nil?) && post.blog.authors.include?(user)
       end

@@ -29,4 +29,5 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('omniauth')
   s.add_dependency('devise')
   s.add_dependency('cancan')
+  s.add_dependency('acts_as_commentable')
 end

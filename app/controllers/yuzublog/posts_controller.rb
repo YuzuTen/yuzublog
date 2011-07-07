@@ -1,14 +1,25 @@
 module Yuzublog
   class PostsController < ApplicationController
     unloadable
-
+#    layout 'refinery/admin', :only => [:new, :edit]
     before_filter :authenticate_user!, :except =>  [ :index, :show ]
-    before_filter :find_blog
 
-#    authorize_resource :through=>:blog
+    load_resource
+    before_filter :find_blog, :except => [:show, :edit]
+    before_filter :set_blog_from_post, :only => [:show, :edit]
+
+  #  authorize_resource :through=>:blog
+
+    before_filter :load_tags
+
     protected
-    def tag_cloud
-      @categories = Post.tag_counts_on(:categories)
+    def set_blog_from_post
+      #We figure out which blog we are in using
+      @blog=@post.blog if @blog.nil?
+    end
+
+    def load_tags
+      @categories = @blog.posts.tag_counts_on(:categories)
     end
 
     public
@@ -23,10 +34,16 @@ module Yuzublog
       end
     end
 
+    def tags
+      @posts=@blog.posts.tagged_with(params[:tags]).paginate(:per_page=>10,:page => params[:page], :order => 'publish_on DESC, created_at DESC')
+      respond_to do |format|
+        format.html
+        format.xml  { render :xml => @posts }
+      end
+    end
     # GET /posts/1
     # GET /posts/1.xml
     def show
-      @post = @blog.posts.find(params[:id])
 
       respond_to do |format|
         format.html # show.html.erb
@@ -37,7 +54,7 @@ module Yuzublog
     # GET /posts/new
     # GET /posts/new.xml
     def new
-      @post = Post.new(:active_user => current_user)
+      @post = @blog.posts.new(:active_user => current_user)
       @post.post_images.build
       respond_to do |format|
         format.html # new.html.erb
@@ -53,14 +70,16 @@ module Yuzublog
 
     # POST /posts
     # POST /posts.xml
+
     def create
+      params[:post][:active_user]= current_user
       @post = @blog.posts.new(params[:post])
 
       logger.info("Post belongs to #{@post.blog}")
 
       respond_to do |format|
         if @post.save
-          format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+          format.html { redirect_to([@blog,@post], :notice => 'Post was successfully created.') }
           format.xml  { render :xml => @post, :status => :created, :location => @post }
         else
           format.html { render :action => "new" }
@@ -79,8 +98,8 @@ module Yuzublog
       respond_to do |format|
         logger.debug "Post_images: #{ params[:post]}"
         if @post.update_attributes(params[:post])
-          format.html { redirect_to([@post], :notice => 'Post was successfully updated.') }
-          fomarmat.xml  { head :ok }
+          format.html { redirect_to([@blog,@post], :notice => 'Post was successfully updated.') }
+          format.xml  { head :ok }
         else
           format.html { render :action => "edit" }
           format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }

@@ -2841,3 +2841,11 @@ Completed 200 OK in 46ms (Views: 21.8ms | ActiveRecord: 1.2ms)
 
 
 Started GET "/" for 127.0.0.1 at 2011-06-23 22:16:34 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2011-06-29 13:31:25 -0700
+
+
+Started GET "/blogs" for 127.0.0.1 at 2011-06-29 13:31:31 -0700
+Processing by Yuzublog::BlogsController#index as HTML
+Completed 500 Internal Server Error in 166ms

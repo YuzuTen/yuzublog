@@ -4,15 +4,15 @@
 
   match 'api' => 'api#api'
 
-  #  scope :module => 'yuzublog' do
-  resources :blogs, :module=> 'yuzublog' do # :controller => 'yuzublog/blogs' 
-    member do
-      get 'rsd'
-      get 'wlwmanifest'
+  scope :module => 'yuzublog' do
+    resources :blogs do
+      member do
+        get 'rsd'
+        get 'wlwmanifest'
+      end
     end
+    resources :posts
   end
-  # end
-  resources :posts, :controller => 'yuzublog/posts'
 
   # If the domain looks like www.*, it's considered a "network" domain
   #constraints(NetworkDomainConstraint) do

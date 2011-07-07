@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   belongs_to :created_by, :class_name => 'User'
   belongs_to :updated_by, :class_name => 'User'
 
+  acts_as_commentable
+
   before_create :set_created_by
   before_update :set_updated_by
 
@@ -10,6 +12,9 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :story
+
+  validates_presence_of :blog_id
+  validates_presence_of :active_user
 
   has_many :post_images, :dependent => :destroy, :class_name => 'PostImage'
 
