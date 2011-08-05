@@ -1,7 +1,7 @@
 class Yuzublog::CommentsController < ApplicationController
   unloadable
   
-  before_filter :identify_post
+  before_filter :identify_post, :except=>[:edit, :update]
 
   protected
   def identify_post
@@ -55,7 +55,7 @@ class Yuzublog::CommentsController < ApplicationController
     @comment=@post.comments.create(params[:comment])
     
     respond_to do |format|
-      if @post.save
+      if @comment.save
         format.html { redirect_to([@blog,@post], :notice => 'Thank you for your comment!') }
         format.xml  { render :xml => @post, :status => :created, :location => [@blog,@post] }
       else

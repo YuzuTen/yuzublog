@@ -1,15 +1,17 @@
-module BloggerStructs
-  class Blog < ActionWebService::Struct
-    member :url, :string
-    member :blogid, :string
-    member :blogName, :string
+if defined? ::ActionWebService
+  module BloggerStructs
+    class Blog < ::ActionWebService::Struct
+      member :url, :string
+      member :blogid, :string
+      member :blogName, :string
+    end
   end
-end
 
-class BloggerApi <  ActionWebService::API::Base
-  inflect_names false
+  class BloggerApi <  ::ActionWebService::API::Base
+    inflect_names false
 
-  api_method :getUsersBlogs,
-  :expects => [ {:appkey => :string}, {:username => :string}, {:password => :string} ],
-  :returns => [[BloggerStructs::Blog]]
+    api_method :getUsersBlogs,
+    :expects => [ {:appkey => :string}, {:username => :string}, {:password => :string} ],
+    :returns => [[BloggerStructs::Blog]]
+  end
 end

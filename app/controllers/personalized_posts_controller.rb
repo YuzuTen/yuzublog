@@ -1,3 +1,3 @@
-class PersonalizedPostsController < PostsController 
+class PersonalizedPostsController < Yuzublog::PostsController
 end
 

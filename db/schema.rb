@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610003921) do
+ActiveRecord::Schema.define(:version => 20110721175848) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(:version => 20110610003921) do
   end
 
   add_index "blogs_users", ["blog_id"], :name => "index_blogs_users_on_blog_id"
+
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.string   "role",                           :default => "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "aasm_state"
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "post_images", :force => true do |t|
     t.string   "caption"
@@ -48,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20110610003921) do
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
     t.integer  "blog_id"
+    t.string   "aasm_state"
   end
 
   create_table "sites", :force => true do |t|

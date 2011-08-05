@@ -15,8 +15,11 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
-  require 'openid/store/filesystem'
-  config.omniauth :open_id, OpenID::Store::Filesystem.new('./tmp')
+
+#  require 'openid/store/filesystem'
+
+  # TODO: Bring omniauth back
+  #config.omniauth :open_id, OpenID::Store::Filesystem.new('./tmp')
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
@@ -53,7 +56,8 @@ Devise.setup do |config|
   config.pepper = "06f99d789d0a6aade7845a94377c2863272052a16a51d4b8b38a74ec0365d2aeaa280d7d29e66433b06e0a033132a68bdf9daeeae9ce8185604811bcc95dff5f"
 
     #Oath setup
-    config.omniauth :facebook, "137469742986143", 'f06cca7a1571399f5dd6c1622c5f0961'
+    #TODO: Bring omniauth back
+    #config.omniauth :facebook, "137469742986143", 'f06cca7a1571399f5dd6c1622c5f0961'
 
     # ==> Configuration for :confirmable
     # The time you want to give your user to confirm his account. During this time

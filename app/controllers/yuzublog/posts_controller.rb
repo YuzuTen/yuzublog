@@ -1,7 +1,7 @@
 module Yuzublog
   class PostsController < ApplicationController
     unloadable
-#    layout 'refinery/admin', :only => [:new, :edit]
+
     before_filter :authenticate_user!, :except =>  [ :index, :show ]
 
     load_resource
@@ -26,7 +26,7 @@ module Yuzublog
     # GET /posts
     # GET /posts.xml
     def index
-      @posts=@blog.posts.paginate(:per_page=>10,:page => params[:page], :order => 'publish_on DESC, created_at DESC')
+      @posts=@blog.posts.published.paginate(:per_page=>10,:page => params[:page], :order => 'publish_on DESC, created_at DESC')
 
       respond_to do |format|
         format.html # index.html.erb
@@ -35,7 +35,7 @@ module Yuzublog
     end
 
     def tags
-      @posts=@blog.posts.tagged_with(params[:tags]).paginate(:per_page=>10,:page => params[:page], :order => 'publish_on DESC, created_at DESC')
+      @posts=@blog.posts.published.tagged_with(params[:tags]).paginate(:per_page=>10,:page => params[:page], :order => 'publish_on DESC, created_at DESC')
       respond_to do |format|
         format.html
         format.xml  { render :xml => @posts }
@@ -91,9 +91,9 @@ module Yuzublog
     # PUT /posts/1
     # PUT /posts/1.xml
     def update
-      params[:post][:active_user]= current_user
 
       @post = @blog.posts.find(params[:id])
+      params[:post][:active_user]= current_user
 
       respond_to do |format|
         logger.debug "Post_images: #{ params[:post]}"

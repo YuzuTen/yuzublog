@@ -11,7 +11,9 @@
         get 'wlwmanifest'
       end
     end
-    resources :posts
+    resources :posts, :shallow=>true do
+      resources :comments
+    end
   end
 
   # If the domain looks like www.*, it's considered a "network" domain
