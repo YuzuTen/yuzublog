@@ -31,9 +31,6 @@ class Ability
     else
       can :read, :all
       can :manage, Blog do |blog|
-        logger.debug user
-
-        puts 'Yuzublog engine ability'
         #user.blog_ids.include? blog.id
         true
       end

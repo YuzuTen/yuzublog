@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 
 #file upload/attachments
-gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'dragonfly'
 
 #web services features
 gem 'rubyjedi-soap4r'

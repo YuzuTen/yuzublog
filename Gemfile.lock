@@ -50,15 +50,6 @@ GIT
       thor (~> 0.14.6)
 
 GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: f5f74e2c71f20c203b7e4ed8a5c80dc8e55c59c3
-  specs:
-    paperclip (2.3.12)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-
-GIT
   remote: https://github.com/JackDanger/will_paginate.git
   revision: e97acba1b94f2a6d19d5a271ddfa5ebc80d3d822
   specs:
@@ -95,7 +86,6 @@ GEM
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
     cancan (1.6.5)
-    cocaine (0.1.0)
     columnize (0.3.3)
     cucumber (1.0.0)
       builder (>= 2.1.2)
@@ -109,6 +99,8 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
+    dragonfly (0.9.5)
+      rack
     erubis (2.7.0)
     eventmachine (0.12.10)
     friendly_id (3.2.1.1)
@@ -207,10 +199,10 @@ DEPENDENCIES
   cancan
   cucumber
   devise
+  dragonfly
   friendly_id
   jquery-rails
   nokogiri
-  paperclip!
   rack-google_analytics
   rails!
   rmagick
