@@ -50,6 +50,10 @@ class Post < ActiveRecord::Base
 
   public
 
+  def comments
+    self.root_comments
+  end
+
   def draft?
     publish_on.nil?
   end
